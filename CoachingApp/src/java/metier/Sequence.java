@@ -1,8 +1,9 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 21:49:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -74,6 +75,31 @@ public class Sequence  implements java.io.Serializable {
     
     public void setConstituers(Set<Constituer> constituers) {
         this.constituers = constituers;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.getIdSequence());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sequence other = (Sequence) obj;
+        if (!Objects.equals(this.getIdSequence(), other.getIdSequence())) {
+            return false;
+        }
+        return true;
     }
 
 

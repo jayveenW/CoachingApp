@@ -1,8 +1,9 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 21:49:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -43,6 +44,31 @@ public class Profilsportif  implements java.io.Serializable {
     
     public void setClients(Set<Client> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.getIdProfilSportif());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Profilsportif other = (Profilsportif) obj;
+        if (!Objects.equals(this.getIdProfilSportif(), other.getIdProfilSportif())) {
+            return false;
+        }
+        return true;
     }
 
 

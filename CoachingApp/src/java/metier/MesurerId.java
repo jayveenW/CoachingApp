@@ -1,5 +1,5 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 févr. 2018 21:49:57 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

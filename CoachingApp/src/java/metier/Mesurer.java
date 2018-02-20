@@ -1,5 +1,8 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 21:49:57 by Hibernate Tools 4.3.1
+
+import java.util.Objects;
+
 
 
 
@@ -57,6 +60,31 @@ public class Mesurer  implements java.io.Serializable {
     
     public void setValeur(Float valeur) {
         this.valeur = valeur;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.getId());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mesurer other = (Mesurer) obj;
+        if (!Objects.equals(this.getId(), other.getId())) {
+            return false;
+        }
+        return true;
     }
 
 

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 21:50:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Notification" table="notification" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idNotification" type="java.lang.Integer">
+            <column name="idNotification" />
+            <generator class="identity" />
+        </id>
+        <property name="messageNotification" type="string">
+            <column name="messageNotification" />
+        </property>
+        <set name="utilisateurs" table="notifier" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idNotification" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Utilisateur">
+                <column name="idUtilisateur" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

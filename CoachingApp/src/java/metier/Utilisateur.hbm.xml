@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20 f?vr. 2018 21:50:01 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="metier.Utilisateur" table="utilisateur" catalog="coachingapp_db" optimistic-lock="version">
         <id name="idUtilisateur" type="java.lang.Integer">
@@ -20,6 +20,14 @@
         <property name="mpdUtilisateur" type="string">
             <column name="mpdUtilisateur" length="25" />
         </property>
+        <set name="notifications" table="notifier" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUtilisateur" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Notification">
+                <column name="idNotification" not-null="true" />
+            </many-to-many>
+        </set>
         <set name="roles" table="avoir" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="idUtilisateur" not-null="true" />

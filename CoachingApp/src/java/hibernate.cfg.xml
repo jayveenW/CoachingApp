@@ -67,6 +67,7 @@ Contributor(s):
     <mapping resource="metier/Action.hbm.xml"/>
     <mapping resource="metier/Occurenceprogramme.hbm.xml"/>
     <mapping resource="metier/Role.hbm.xml"/>
+    <mapping resource="metier/Notification.hbm.xml"/>
     <mapping resource="metier/Suivre.hbm.xml"/>
     <mapping resource="metier/Mesurer.hbm.xml"/>
     <mapping resource="metier/Piecejointe.hbm.xml"/>
