@@ -8,6 +8,14 @@
         <servlet-name>ServletProg</servlet-name>
         <servlet-class>servlets.ServletProg</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <servlet-class>servlets.ServletCreerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreerSeance</servlet-name>
+        <jsp-file>/jsp/coach/CreerSeance.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>DefProg</servlet-name>
         <url-pattern>/DefProg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <url-pattern>/ServletCreerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerSeance</servlet-name>
+        <url-pattern>/CreerSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
