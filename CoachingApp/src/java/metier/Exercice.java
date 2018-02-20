@@ -1,5 +1,5 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 16:23:10 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,7 +24,17 @@ public class Exercice  implements java.io.Serializable {
 
     public Exercice() {
     }
-
+    
+    public Exercice(Categorieexercice categorieexercice, String libelleExercice, String niveauExercice, String descriptifExercice, String photoExercice, String videoExercice, String recommandationExercice) {
+        this.categorieexercice = categorieexercice;
+        this.libelleExercice = libelleExercice;
+        this.niveauExercice = niveauExercice;
+        this.descriptifExercice = descriptifExercice;
+        this.photoExercice = photoExercice;
+        this.videoExercice = videoExercice;
+        this.recommandationExercice = recommandationExercice;
+    }
+    
     public Exercice(Categorieexercice categorieexercice, String libelleExercice, String niveauExercice, String descriptifExercice, String photoExercice, String videoExercice, String recommandationExercice, Set<Composer> composers, Set<Objectif> objectifs) {
        this.categorieexercice = categorieexercice;
        this.libelleExercice = libelleExercice;

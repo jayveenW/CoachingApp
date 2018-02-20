@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="row">
-            <form action="" method="POST" id="formExo">
+            <form action="ServletAjoutExercice" method="POST" id="formExo">
                 <div class="form-group">
-                    <label for="catExo">Niveau de l'exercice</label>
+                    <label for="catExo">Catégorie de l'exercice</label>
                     <select class="form-control" id="catExo">
                       <option></option>
                     </select>
@@ -59,7 +59,7 @@
     <script type="text/javascript">
 $(document).ready(function() {  
     $.ajax({
-       url : 'ServletAjoutExercice',
+       url : 'ServletCategorieExercice',
        type : 'POST',
        datatype : 'xml'
        }).done(function(xml){

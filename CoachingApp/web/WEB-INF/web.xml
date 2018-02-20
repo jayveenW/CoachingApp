@@ -8,16 +8,38 @@
         <servlet-name>ServletProg</servlet-name>
         <servlet-class>servlets.ServletProg</servlet-class>
     </servlet>
-
-
-
-
-
-
-
-
-
-
+    <servlet>
+        <servlet-name>FormCreaExo</servlet-name>
+        <jsp-file>/jsp/coach/FormCreaExo.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAjoutExercice</servlet-name>
+        <servlet-class>servlets.ServletAjoutExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCategorieExercice</servlet-name>
+        <servlet-class>servlets.ServletCategorieExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Footer</servlet-name>
+        <jsp-file>/jsp/includes/footer.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Header</servlet-name>
+        <jsp-file>/jsp/includes/header.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>HeaderAdmin</servlet-name>
+        <jsp-file>/jsp/includes/headerAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>HeaderClient</servlet-name>
+        <jsp-file>/jsp/includes/headerClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>HeaderCoach</servlet-name>
+        <jsp-file>/jsp/includes/headerCoach.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -34,16 +56,6 @@
         <servlet-name>DefProg</servlet-name>
         <url-pattern>/DefProg</url-pattern>
     </servlet-mapping>
-
-
-
-
-
-
-
-
-
-
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/Connexion</url-pattern>
@@ -52,7 +64,7 @@
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>Connexion</servlet-name>
         <jsp-file>/jsp/connexion/Connexion.jsp</jsp-file>
     </servlet>
@@ -60,7 +72,38 @@
         <servlet-name>ServletLogin</servlet-name>
         <servlet-class>servlets.ServletLogin</servlet-class>
     </servlet>
-    
+    <servlet-mapping>
+        <servlet-name>FormCreaExo</servlet-name>
+        <url-pattern>/FormCreaExo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjoutExercice</servlet-name>
+        <url-pattern>/ServletAjoutExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCategorieExercice</servlet-name>
+        <url-pattern>/ServletCategorieExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Footer</servlet-name>
+        <url-pattern>/Footer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Header</servlet-name>
+        <url-pattern>/Header</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderAdmin</servlet-name>
+        <url-pattern>/HeaderAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderClient</servlet-name>
+        <url-pattern>/HeaderClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderCoach</servlet-name>
+        <url-pattern>/HeaderCoach</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
