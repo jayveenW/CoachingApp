@@ -5,6 +5,7 @@
  */
 package metier;
 
+import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
@@ -17,7 +18,7 @@ import org.hibernate.SessionFactory;
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-    
+
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
@@ -29,8 +30,12 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
-    
+
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+
+    public static Session openSession() {
+        return sessionFactory.openSession();
     }
 }
