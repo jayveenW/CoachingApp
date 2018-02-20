@@ -4,9 +4,25 @@
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <servlet-class>servlets.ServletRecupProfilSportif</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletProg</servlet-name>
+        <servlet-class>servlets.ServletProg</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletProg</servlet-name>
+        <url-pattern>/ServletProg</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DefProg</servlet-name>
+        <jsp-file>/jsp/coach/DefProg.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DefProg</servlet-name>
+        <url-pattern>/DefProg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
