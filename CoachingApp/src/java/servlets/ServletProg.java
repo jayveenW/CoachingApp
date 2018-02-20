@@ -65,7 +65,7 @@ public class ServletProg extends HttpServlet {
 
     private void listeVideOuNon(String[] listId) throws Exception {
         if (listId == null) {
-            throw new Exception("Vous n'avez pas sélectionné de message à supprimer.");
+            throw new Exception("Vous n'avez pas sélectionné de profils sportifs à modifier.");
         }
     }
 

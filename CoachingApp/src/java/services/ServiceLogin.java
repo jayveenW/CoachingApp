@@ -8,6 +8,7 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 import metier.HibernateUtil;
+import metier.Role;
 import metier.Utilisateur;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,11 +19,13 @@ import org.hibernate.Transaction;
  * @author NG71392
  */
 public class ServiceLogin {
-        /**
+
+    /**
      * Permet de savoir si l'utilisateur est authentifié
+     *
      * @param userId le mail qui sert d'identifiant pour un utilisateur
      * @param password le mot de passe de l'utilisateur
-     * @return 
+     * @return
      */
     public boolean authenticateUser(String userId, String password) {
         Utilisateur user = getUserByUserId(userId);
@@ -35,15 +38,16 @@ public class ServiceLogin {
 
     /**
      * Requete qui permet de récupérer l'utilisateur pour le mail en entré
+     *
      * @param userId le mail qui sert d'identifiant pour un utilisateur
-     * @return 
+     * @return
      */
     public Utilisateur getUserByUserId(String userId) {
         Session session = HibernateUtil.openSession(); // ouverture de la session hibernate
         Transaction tx = null;
         Utilisateur user = null;
         try {
-            tx = session.getTransaction(); 
+            tx = session.getTransaction();
             tx.begin(); // demarre une transaction pour la session
             Query query = session.createQuery("from Utilisateur where mailUtilisateur='" + userId + "'"); // requete HQL
             user = (Utilisateur) query.uniqueResult(); // récupère le seul éléement de la requête (au lieu d'une liste)
@@ -62,7 +66,8 @@ public class ServiceLogin {
 
     /**
      * Récupère la liste des utilisateurs
-     * @return 
+     *
+     * @return
      */
     public List<Utilisateur> getListOfUsers() {
         List<Utilisateur> list = new ArrayList<>();
@@ -83,5 +88,30 @@ public class ServiceLogin {
             session.close();
         }
         return list;
+    }
+
+    public Role getRoleUtilisateur(Utilisateur user) {
+
+        Session session = HibernateUtil.openSession(); 
+        Transaction tx = null;
+        Role role = null;
+        int idUser = user.getIdUtilisateur();
+        
+        try {
+            tx = session.getTransaction();
+            tx.begin(); 
+            Query query = session.createQuery("from role as r where r.idRole in (select a.idRole from avoir as a where a.idUtilisateur ='" + idUser + "'");
+            role = (Role) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) { 
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL de récupération du role de l'utilisateur");
+        } finally {
+            session.close();
+        }
+        return role;
     }
 }
