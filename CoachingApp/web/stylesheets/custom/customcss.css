@@ -1,0 +1,67 @@
+.btn-sq-lg {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.btn-sq {
+    width: 80px !important;
+    height: 100px !important;
+    font-size: 10px;
+}
+
+.btn-sq-sm {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 10px;
+}
+
+.btn-sq-xs {
+    width: 25px !important;
+    height: 25px !important;
+    padding:2px;
+}
+
+
+.navbar-default .navbar-brand {
+    font-size: 2.5em;
+    color: #FFC107;
+    font-weight:600;
+}
+
+.navbar-default{
+    background-color: rgb(36,36,36);
+}
+
+a{
+    color: rgba(255,255,255,0.9);
+}
+
+.page-header{
+    font-size: 3em;
+    color: #262c38;
+    letter-spacing: 1px;
+    position: relative;
+    font-weight: 600;
+    text-align: center;
+}
+
+.ul#menu{
+    background-color: rgb(36,36,36);
+    
+}
+
+.sidebar ul li a.active {
+    background-color: rgb(36,36,36);
+}
+
+body {
+    background-color: rgb(36,36,36);
+}
+
+.page-header:after {
+    border-top: 2px solid #FFC107;
+    display: block;
+    width: 81px;
+    content: "";
+    margin: 8px auto 0;
+}
