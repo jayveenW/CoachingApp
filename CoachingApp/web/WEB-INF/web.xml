@@ -8,14 +8,16 @@
         <servlet-name>ServletProg</servlet-name>
         <servlet-class>servlets.ServletProg</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Connexion</servlet-name>
-        <jsp-file>/jsp/connexion/Connexion.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>ServletLogin</servlet-name>
-        <servlet-class>servlets.ServletLogin</servlet-class>
-    </servlet>
+
+
+
+
+
+
+
+
+
+
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -32,6 +34,16 @@
         <servlet-name>DefProg</servlet-name>
         <url-pattern>/DefProg</url-pattern>
     </servlet-mapping>
+
+
+
+
+
+
+
+
+
+
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
         <url-pattern>/Connexion</url-pattern>
@@ -40,6 +52,15 @@
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
+        <servlet>
+        <servlet-name>Connexion</servlet-name>
+        <jsp-file>/jsp/connexion/Connexion.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>servlets.ServletLogin</servlet-class>
+    </servlet>
+    
     <session-config>
         <session-timeout>
             30
