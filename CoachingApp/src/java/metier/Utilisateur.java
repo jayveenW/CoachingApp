@@ -1,5 +1,5 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 16:23:10 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -21,6 +21,13 @@ public class Utilisateur  implements java.io.Serializable {
     public Utilisateur() {
     }
 
+    public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur, String mpdUtilisateur) {
+       this.nomUtilisateur = nomUtilisateur;
+       this.prenomUtilisateur = prenomUtilisateur;
+       this.mailUtilisateur = mailUtilisateur;
+       this.mpdUtilisateur = mpdUtilisateur;
+    }    
+    
     public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur, String mpdUtilisateur, Set<Role> roles) {
        this.nomUtilisateur = nomUtilisateur;
        this.prenomUtilisateur = prenomUtilisateur;

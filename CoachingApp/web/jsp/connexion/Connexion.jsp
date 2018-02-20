@@ -16,7 +16,7 @@
             <div style="padding: 100px 0 0 250px;">
                 <div id="login-box">
                     <h2>Login Page</h2>
-                    Please provide your credential to use this website
+                    Entrez vos identifiants
                     <br>
                     <br>
                     <div id="login-box-name" style="margin-top:20px;">User Id:</div>
@@ -29,7 +29,7 @@
                     </div>
                     <br />
                     <span class="login-box-options">
-                        New User?  <a href="register.jsp" style="margin-left:30px;">Register Here</a>
+                        New User?  <a href="Inscription" style="margin-left:30px;">Inscrivez vous</a>
                     </span>
                     <br />
                     <br />

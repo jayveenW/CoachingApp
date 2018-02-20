@@ -1,5 +1,5 @@
 package metier;
-// Generated 20 févr. 2018 16:23:10 by Hibernate Tools 4.3.1
+// Generated 20 fï¿½vr. 2018 16:23:10 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -33,6 +33,17 @@ public class Client  implements java.io.Serializable {
     public Client() {
     }
 
+    // Constructeur pour inscription d'un client
+    public Client(String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, Integer telephoneClient) {
+       this.nomCli = nomCli;
+       this.prenomClient = prenomClient;
+       this.dateNaissanceClient = dateNaissanceClient;
+       this.statutClient = statutClient;
+       this.mailClient = mailClient;
+       this.motDePasseClient = motDePasseClient;
+       this.telephoneClient = telephoneClient;
+    }    
+    
     public Client(Coach coach, String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, Integer telephoneClient, String typeAbonnementClient, Integer idProfilSportif, Set<Mesurer> mesurers, Set<Communiquer> communiquers, Set<Profilsportif> profilsportifs, Set<Occseance> occseances, Set<Suivre> suivres, Set<Piecejointe> piecejointes) {
        this.coach = coach;
        this.nomCli = nomCli;
