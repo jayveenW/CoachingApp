@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Client" table="client" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idClient" type="java.lang.Integer">
+            <column name="idClient" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="coach" class="metier.Coach" fetch="select">
+            <column name="idCoach" />
+        </many-to-one>
+        <property name="nomCli" type="string">
+            <column name="nomCli" length="25" />
+        </property>
+        <property name="prenomClient" type="string">
+            <column name="prenomClient" length="25" />
+        </property>
+        <property name="dateNaissanceClient" type="date">
+            <column name="dateNaissanceClient" length="10" />
+        </property>
+        <property name="statutClient" type="string">
+            <column name="statutClient" length="25" />
+        </property>
+        <property name="mailClient" type="string">
+            <column name="mailClient" length="25" />
+        </property>
+        <property name="motDePasseClient" type="string">
+            <column name="motDePasseClient" length="25" />
+        </property>
+        <property name="telephoneClient" type="java.lang.Integer">
+            <column name="telephoneClient" />
+        </property>
+        <property name="typeAbonnementClient" type="string">
+            <column name="typeAbonnementClient" length="25" />
+        </property>
+        <property name="idProfilSportif" type="java.lang.Integer">
+            <column name="idProfilSportif" />
+        </property>
+        <set name="mesurers" table="mesurer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" not-null="true" />
+            </key>
+            <one-to-many class="metier.Mesurer" />
+        </set>
+        <set name="communiquers" table="communiquer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" not-null="true" />
+            </key>
+            <one-to-many class="metier.Communiquer" />
+        </set>
+        <set name="profilsportifs" table="developper" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Profilsportif">
+                <column name="idProfilSportif" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="occseances" table="occseance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" />
+            </key>
+            <one-to-many class="metier.Occseance" />
+        </set>
+        <set name="suivres" table="suivre" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" not-null="true" />
+            </key>
+            <one-to-many class="metier.Suivre" />
+        </set>
+        <set name="piecejointes" table="joindre" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="idClient" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Piecejointe">
+                <column name="idPieceJointe" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

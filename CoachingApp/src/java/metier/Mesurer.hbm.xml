@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Mesurer" table="mesurer" catalog="coachingapp_db" optimistic-lock="version">
+        <composite-id name="id" class="metier.MesurerId">
+            <key-property name="idClient" type="int">
+                <column name="idClient" />
+            </key-property>
+            <key-property name="dateMesure" type="date">
+                <column name="DateMesure" length="10" />
+            </key-property>
+            <key-property name="idMesure" type="int">
+                <column name="idMesure" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="client" class="metier.Client" update="false" insert="false" fetch="select">
+            <column name="idClient" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mesure" class="metier.Mesure" update="false" insert="false" fetch="select">
+            <column name="idMesure" not-null="true" />
+        </many-to-one>
+        <property name="valeur" type="java.lang.Float">
+            <column name="valeur" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

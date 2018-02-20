@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Occurenceprogramme" table="occurenceprogramme" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idOccProgramme" type="java.lang.Integer">
+            <column name="idOccProgramme" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="programme" class="metier.Programme" fetch="select">
+            <column name="idProgramme" />
+        </many-to-one>
+        <property name="etatOccProgramme" type="string">
+            <column name="etatOccProgramme" length="25" />
+        </property>
+        <set name="suivres" table="suivre" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idOccProgramme" not-null="true" />
+            </key>
+            <one-to-many class="metier.Suivre" />
+        </set>
+    </class>
+</hibernate-mapping>

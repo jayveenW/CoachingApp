@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Profilsportif" table="profilsportif" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idProfilSportif" type="java.lang.Integer">
+            <column name="idProfilSportif" />
+            <generator class="identity" />
+        </id>
+        <property name="libelleProfilSportif" type="string">
+            <column name="libelleProfilSportif" length="50" />
+        </property>
+        <set name="clients" table="developper" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProfilSportif" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Client">
+                <column name="idClient" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

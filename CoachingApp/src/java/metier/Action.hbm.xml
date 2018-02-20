@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Action" table="action" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idAction" type="java.lang.Integer">
+            <column name="idAction" />
+            <generator class="identity" />
+        </id>
+        <property name="libelleAction" type="string">
+            <column name="libelleAction" length="25" />
+        </property>
+        <set name="roles" table="pouvoir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAction" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Role">
+                <column name="idRole" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

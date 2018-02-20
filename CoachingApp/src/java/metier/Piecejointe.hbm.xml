@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Piecejointe" table="piecejointe" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idPieceJointe" type="java.lang.Integer">
+            <column name="idPieceJointe" />
+            <generator class="identity" />
+        </id>
+        <property name="nomPieceJointe" type="string">
+            <column name="nomPieceJointe" length="25" />
+        </property>
+        <set name="communiquers" table="communiquer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPieceJointe" not-null="true" />
+            </key>
+            <one-to-many class="metier.Communiquer" />
+        </set>
+        <set name="clients" table="joindre" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPieceJointe" not-null="true" />
+            </key>
+            <many-to-many entity-name="metier.Client">
+                <column name="idClient" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

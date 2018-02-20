@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Mesure" table="mesure" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idMesure" type="java.lang.Integer">
+            <column name="idMesure" />
+            <generator class="identity" />
+        </id>
+        <property name="libelleMesure" type="string">
+            <column name="libelleMesure" length="25" />
+        </property>
+        <set name="mesurers" table="mesurer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMesure" not-null="true" />
+            </key>
+            <one-to-many class="metier.Mesurer" />
+        </set>
+    </class>
+</hibernate-mapping>

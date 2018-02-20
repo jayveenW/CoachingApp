@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Composer" table="composer" catalog="coachingapp_db" optimistic-lock="version">
+        <composite-id name="id" class="metier.ComposerId">
+            <key-property name="idExercice" type="int">
+                <column name="idExercice" />
+            </key-property>
+            <key-property name="idOccSeance" type="int">
+                <column name="idOccSeance" />
+            </key-property>
+            <key-property name="idSeance" type="int">
+                <column name="idSeance" />
+            </key-property>
+            <key-property name="ordre" type="int">
+                <column name="ordre" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="exercice" class="metier.Exercice" update="false" insert="false" fetch="select">
+            <column name="idExercice" not-null="true" />
+        </many-to-one>
+        <many-to-one name="occseance" class="metier.Occseance" update="false" insert="false" fetch="select">
+            <column name="idOccSeance" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seance" class="metier.Seance" update="false" insert="false" fetch="select">
+            <column name="idSeance" not-null="true" />
+        </many-to-one>
+        <property name="nbRepetitionExercice" type="java.lang.Integer">
+            <column name="nbRepetitionExercice" />
+        </property>
+        <property name="nbSerieExercice" type="java.lang.Integer">
+            <column name="nbSerieExercice" />
+        </property>
+        <property name="noteClientExercice" type="string">
+            <column name="noteClientExercice" length="25" />
+        </property>
+        <property name="commentaireClientExercice" type="string">
+            <column name="commentaireClientExercice" />
+        </property>
+        <property name="nbMaximumRepetition" type="java.lang.Integer">
+            <column name="nbMaximumRepetition" />
+        </property>
+        <property name="tempsMaximum" type="java.lang.Integer">
+            <column name="tempsMaximum" />
+        </property>
+        <property name="estDefaut" type="java.lang.Boolean">
+            <column name="estDefaut" />
+        </property>
+    </class>
+</hibernate-mapping>

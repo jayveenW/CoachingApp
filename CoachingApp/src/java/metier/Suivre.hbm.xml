@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Suivre" table="suivre" catalog="coachingapp_db" optimistic-lock="version">
+        <composite-id name="id" class="metier.SuivreId">
+            <key-property name="idClient" type="int">
+                <column name="idClient" />
+            </key-property>
+            <key-property name="numeroSemaine" type="int">
+                <column name="numeroSemaine" />
+            </key-property>
+            <key-property name="annee" type="int">
+                <column name="annee" />
+            </key-property>
+            <key-property name="idOccProgramme" type="int">
+                <column name="idOccProgramme" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="client" class="metier.Client" update="false" insert="false" fetch="select">
+            <column name="idClient" not-null="true" />
+        </many-to-one>
+        <many-to-one name="occurenceprogramme" class="metier.Occurenceprogramme" update="false" insert="false" fetch="select">
+            <column name="idOccProgramme" not-null="true" />
+        </many-to-one>
+        <property name="semaineFin" type="java.lang.Integer">
+            <column name="semaineFin" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Occseance" table="occseance" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idOccSeance" type="java.lang.Integer">
+            <column name="idOccSeance" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="metier.Client" fetch="select">
+            <column name="idClient" />
+        </many-to-one>
+        <many-to-one name="occseance" class="metier.Occseance" fetch="select">
+            <column name="idCoach" />
+        </many-to-one>
+        <property name="dureeOccSeance" type="java.lang.Float">
+            <column name="dureeOccSeance" precision="12" scale="0" />
+        </property>
+        <property name="statutOccSeance" type="java.lang.Boolean">
+            <column name="statutOccSeance" />
+        </property>
+        <property name="etatOccSeance" type="string">
+            <column name="etatOccSeance" length="25" />
+        </property>
+        <property name="tourMinimum" type="java.lang.Integer">
+            <column name="tourMinimum" />
+        </property>
+        <property name="tourMaximum" type="java.lang.Integer">
+            <column name="tourMaximum" />
+        </property>
+        <property name="dateFin" type="date">
+            <column name="dateFin" length="10" />
+        </property>
+        <property name="dateDebut" type="date">
+            <column name="dateDebut" length="10" />
+        </property>
+        <property name="fcRepos" type="java.lang.Integer">
+            <column name="fcRepos" />
+        </property>
+        <property name="fcAllonge" type="java.lang.Integer">
+            <column name="fcAllonge" />
+        </property>
+        <property name="fcFlexion" type="java.lang.Integer">
+            <column name="fcFlexion" />
+        </property>
+        <property name="fcRecuperation" type="java.lang.Integer">
+            <column name="fcRecuperation" />
+        </property>
+        <property name="commentaireCoach" type="string">
+            <column name="commentaireCoach" length="25" />
+        </property>
+        <set name="composers" table="composer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idOccSeance" not-null="true" />
+            </key>
+            <one-to-many class="metier.Composer" />
+        </set>
+        <set name="occseances" table="occseance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCoach" />
+            </key>
+            <one-to-many class="metier.Occseance" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 f?vr. 2018 16:23:14 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="metier.Coach" table="coach" catalog="coachingapp_db" optimistic-lock="version">
+        <id name="idCoach" type="java.lang.Integer">
+            <column name="idCoach" />
+            <generator class="identity" />
+        </id>
+        <property name="nomCoach" type="string">
+            <column name="nomCoach" length="25" />
+        </property>
+        <property name="prenomCoach" type="string">
+            <column name="prenomCoach" length="25" />
+        </property>
+        <property name="mailCoach" type="string">
+            <column name="mailCoach" length="25" />
+        </property>
+        <set name="communiquers" table="communiquer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCoach" not-null="true" />
+            </key>
+            <one-to-many class="metier.Communiquer" />
+        </set>
+        <set name="clients" table="client" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCoach" />
+            </key>
+            <one-to-many class="metier.Client" />
+        </set>
+    </class>
+</hibernate-mapping>
