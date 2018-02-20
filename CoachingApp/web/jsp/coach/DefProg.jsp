@@ -8,12 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="services.ServiceProfilSportif"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+<%@include file="../includes/headerCoach.jsp" %>
 <%
             ServiceProfilSportif ssp = new ServiceProfilSportif();
             List<Profilsportif> recupProfils = ssp.recupProfils();
@@ -29,7 +24,7 @@
                     %>
                     <tr>
                         <td><% out.println(ps.getLibelleProfilSportif());%></td>
-                        <td><input type="checkbox" name="profilSportif" value="<%= ps.getIdProfilSportif()%>" style="text-align:right;"/></td
+                        <td><input type="checkbox" name="profilSportif" value="<%= ps.getIdProfilSportif()%>" style="text-align:right;"/></td>
                     </tr>
                     <%  }
                         } catch (Exception e) {
@@ -79,5 +74,4 @@
         
                 </div>
         -->
-    </body>
-</html>
+<%@include file="../includes/footer.jsp" %>

@@ -1,20 +1,12 @@
 <%-- 
     Document   : CreerSeance
-    Created on : 20 f√©vr. 2018, 17:23:58
+    Created on : 20 fÈvr. 2018, 17:23:58
     Author     : Many
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cr√©er une s√©ance</title>
-    </head>
-    <body>
-        <h1>Cr√©er une s√©ance</h1>
+<%@include file="../includes/headerCoach.jsp" %>
+        <h1>CrÈer une sÈance</h1>
         <form action="ServletCreerSeance" method="POST">
             <input type="text" name="nomSeance" id="nomSeance">
         </form>
-    </body>
-</html>
+
+<%@include file="../includes/footer.jsp" %>

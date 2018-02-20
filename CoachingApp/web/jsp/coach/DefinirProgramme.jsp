@@ -8,14 +8,7 @@
 <%@page import="metier.Profilsportif"%>
 <%@page import="services.ServiceProfilSportif"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <title>JSP Page</title>
-    </head>
-    <body>
+<%@include file="../includes/headerCoach.jsp" %>
         <%
             ServiceProfilSportif ssp = new ServiceProfilSportif();
             List<Profilsportif> recupProfils = ssp.recupProfils();
@@ -81,5 +74,4 @@
         
                 </div>
         -->
-    </body>
-</html>
+<%@include file="../includes/footer.jsp" %>
