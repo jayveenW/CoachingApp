@@ -7,6 +7,7 @@ package servlets;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -52,7 +53,7 @@ public class ServletAjouterClient extends HttpServlet {
             Date Age = new Date();
             try{
             Age = df.parse(ageNonParse);}
-            catch(Exception e){
+            catch(ParseException e){
                 System.out.println(e);
             }
             Client cli = new Client();

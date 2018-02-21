@@ -33,14 +33,14 @@
                         <input name="password" type="password" class="form-login" value="<%= (m == null) ? "" : m%>" size="30" maxlength="48" />
                     </div>
                     <br />
+                    <br />
+                    <input style="margin-left:100px;" type="submit" value="Login" />
                     <span class="login-box-options">
                         Nouvel utilisateur ? <a href="Inscription" style="margin-left:30px;">Inscrivez vous</a>
                     </span>
-                    <br />
-                    <br />
-                    <input style="margin-left:100px;" type="submit" value="Login" />
                     <span class="error">${erreurs['idFaux']}</span>
                     <span class="error">${erreurs['Vide']}</span>
+                    <span class="error">${erreurs['Pasrole']}</span>
                     <span class="success">${erreurs['Valide']}</span>
                 </div>
             </div>

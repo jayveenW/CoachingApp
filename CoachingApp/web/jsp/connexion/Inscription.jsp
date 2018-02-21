@@ -42,7 +42,7 @@
 
                 <div id="login-box-name" style="margin-top:20px;">Mail :</div>
                 <div id="login-box-field" style="margin-top:20px;">
-                    <input type="email" name="mailCli" class="form-login" value="" placeholder="exemple@gmail.com" size="30" maxlength="50" pattern="/^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/" />
+                    <input type="email" name="mailCli" class="form-login" value="" placeholder="exemple@gmail.com" size="30" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z]{2,10}" />
                 </div>
 
                 <div id="login-box-name" style="margin-top:20px;">Mot de passe :</div>

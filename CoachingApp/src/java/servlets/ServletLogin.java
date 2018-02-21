@@ -47,29 +47,23 @@ public class ServletLogin extends HttpServlet {
 
         if (userId.isEmpty() || password.isEmpty()) {
             url = "Connexion";
-            erreurs.put("Vide", "Veuillez renseigner les champs");
+            erreurs.put("Vide", "Veuillez renseigner tous les champs");
             request.setAttribute(CHAMP_ERR, erreurs);
         } else {
             ServiceLogin loginService = new ServiceLogin(); // INSTANCIATION du service
-            boolean result = loginService.authenticateUser(userId, password); // recup du résultat de la premiere methode du service
+            boolean result = loginService.authenticateUser(userId, password);
 
             if (result == true) {
                 Utilisateur user = loginService.getUserByUserId(userId);
-                Role userRole = loginService.getRoleUtilisateur(user);
                 request.getSession().setAttribute("user", user); // La session prend l'utilisateur connecté en paramètre
-                if (userRole.getLibelleRole() != null) {
-                    switch (userRole.getLibelleRole()) {
-                        case "Administrateur":
-                            url = "ADMINJSP";
-                            break;
-                        case "Coach":
-                            url = "COACHJSP";
-                            break;
-                        case "Client":
-                            url = "CLIENTJSP";
-                            break;
-                        default:
-                            break;
+
+                for (Role r : user.getRoles()) {
+                    if ("Administrateur".equals(r.getLibelleRole())) {
+                        url = "ADMINJSP";
+                    } else if ("Client".equals(r.getLibelleRole())) {
+                        url = "FormCreaExo";
+                    } else if ("Coach".equals(r.getLibelleRole())) {
+                        url = "COACHACCUEILJSP";
                     }
                 }
             } else {
@@ -83,6 +77,7 @@ public class ServletLogin extends HttpServlet {
         }
 
         rd = request.getRequestDispatcher(url);
+
         rd.forward(request, response);
     }
 
