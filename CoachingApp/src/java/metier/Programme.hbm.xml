@@ -11,7 +11,7 @@
         <property name="libelleProgramme" type="string">
             <column name="libelleProgramme" length="25" />
         </property>
-        <set name="profilSportif" table="developper" inverse="false" lazy="true" fetch="select">
+        <set name="profilSportifs" table="developper" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idProgramme" not-null="true" />
             </key>
