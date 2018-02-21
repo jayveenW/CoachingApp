@@ -50,16 +50,14 @@ public class ServletLogin extends HttpServlet {
             erreurs.put("Vide", "Veuillez renseigner les champs");
             request.setAttribute(CHAMP_ERR, erreurs);
         } else {
-            
             ServiceLogin loginService = new ServiceLogin(); // INSTANCIATION du service
             boolean result = loginService.authenticateUser(userId, password); // recup du résultat de la premiere methode du service
-            Utilisateur user = loginService.getUserByUserId(userId); // recup du résultat de la deuxieme methode du service
-            Role userRole = loginService.getRoleUtilisateur(user); // recup du reséultat de la troisieme methode du service
-            
-            if (result == true) {
 
+            if (result == true) {
+                Utilisateur user = loginService.getUserByUserId(userId);
+                Role userRole = loginService.getRoleUtilisateur(user);
                 request.getSession().setAttribute("user", user); // La session prend l'utilisateur connecté en paramètre
-                if (null != userRole.getLibelleRole()) {
+                if (userRole.getLibelleRole() != null) {
                     switch (userRole.getLibelleRole()) {
                         case "Administrateur":
                             url = "ADMINJSP";
@@ -76,6 +74,9 @@ public class ServletLogin extends HttpServlet {
                 }
             } else {
                 url = "Connexion";
+                Utilisateur user = new Utilisateur(userId, password);
+                request.setAttribute("pseudo", user.getMailUtilisateur());
+                request.setAttribute("pass", user.getMpdUtilisateur());
                 erreurs.put(CHAMP_INCO, "Les identifiants entrés sont incorrects.");
                 request.setAttribute(CHAMP_ERR, erreurs);
             }

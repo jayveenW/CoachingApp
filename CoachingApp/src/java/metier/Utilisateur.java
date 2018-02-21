@@ -21,6 +21,11 @@ public class Utilisateur implements java.io.Serializable {
     public Utilisateur() {
     }
 
+    public Utilisateur(String mailUtilisateur, String mpdUtilisateur) {
+        this.mailUtilisateur = mailUtilisateur;
+        this.mpdUtilisateur = mpdUtilisateur;
+    }
+
     public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mailUtilisateur, String mpdUtilisateur) {
         this.nomUtilisateur = nomUtilisateur;
         this.prenomUtilisateur = prenomUtilisateur;
@@ -118,5 +123,4 @@ public class Utilisateur implements java.io.Serializable {
         return true;
     }
 
-    
 }
