@@ -1,22 +1,20 @@
 <%-- 
-    Document   : DefinirProgramme
-    Created on : 20 févr. 2018, 13:56:54
+    Document   : DefProg
+    Created on : 20 févr. 2018, 16:37:33
     Author     : NG71392
 --%>
 
-<%@page import="java.util.List"%>
 <%@page import="metier.Profilsportif"%>
+<%@page import="java.util.List"%>
 <%@page import="services.ServiceProfilSportif"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
         <title>JSP Page</title>
     </head>
-    <body>
-        <%
+<%
             ServiceProfilSportif ssp = new ServiceProfilSportif();
             List<Profilsportif> recupProfils = ssp.recupProfils();
 
@@ -24,7 +22,7 @@
         %>
         <h1>Choisir le ou les les profil(s) sportifs</h1>
         <div>
-            <form action="ServletRecupProfilSportif"  method="post">
+            <form action="ServletProg"  method="post">
                 <table>
                     <% try {
                             for (Profilsportif ps : recupProfils) {
