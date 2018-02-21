@@ -49,8 +49,9 @@ public class ServletAjouterClient extends HttpServlet {
 
         try {
             DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            Date Age = new Date();
             try{
-            Date Age = df.parse(ageNonParse);}
+            Age = df.parse(ageNonParse);}
             catch(Exception e){
                 System.out.println(e);
             }
