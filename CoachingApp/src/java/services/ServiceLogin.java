@@ -58,6 +58,8 @@ public class ServiceLogin {
             }
             e.printStackTrace(); // affiche l'exception et l'endroit où a eu lieu l'erreur
             System.out.println("Erreur sur la transaction, pb SQL de récupération de l'utilisateur");
+        } finally {
+            session.close();
         }
         return user;
     }
@@ -82,6 +84,8 @@ public class ServiceLogin {
                 tx.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return list;
     }
@@ -105,7 +109,9 @@ public class ServiceLogin {
             }
             e.printStackTrace();
             System.out.println("Erreur sur la transaction, pb SQL de récupération du role de l'utilisateur");
-        } 
+        } finally {
+            session.close();
+        }
         return role;
     }
 }
