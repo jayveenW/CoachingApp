@@ -21,6 +21,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../../stylesheets/dist/js/sb-admin-2.js"></script>
+    <script src="../../javascript/Ajax.js" type="text/javascript">
 
 </body>
 
