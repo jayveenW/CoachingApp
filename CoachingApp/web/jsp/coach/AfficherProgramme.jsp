@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="services.ServicesProgramme"%>
+<%@page import="metier.Programme"%>
 <%@include file="../includes/headerCoach.jsp" %>
 <!DOCTYPE html>
 
@@ -21,22 +24,27 @@
             <input class="btn btn-default" type="submit" name="Ajouter" id="AjouterProgramme" value="Ajouter un programme">
         </div>
 
+
+
         <div class="table-responsive">
             <table class="table table-striped" id="tableauProgramme">       
-                <tr>
+                <thead>
                     <th>Nom du programme</th>
                     <th>Actions</th>
-                </tr>
+                </thead>
                 <!-- à virer par la suite --> 
-
-                <tr>
-                    <td> Projet 1</td>
                     <!-- Ajouter les liens pour accéder à modifier et supprimer --> 
 
-                    <td> <img src="../../ressources/images/modifier.png">
-                        <img src="../../ressources/images/supprimer.png">
-                    </td>
-                </tr>
+                    <%
+                        try {
+                            for (Programme prog : ServicesProgramme.afficherProgramme()) {
+                                out.println("<tr><td>" + prog.getIdProgramme()+ "</td><td>" + prog.getLibelleProgramme() + "</td></tr>");
+                            }
+                        } catch (Exception e) {
+                            out.println("<p>" + e.getMessage() + "<p>");
+                        }
+                    %>  
+                    <tr><td>fin tableau</td><td></td></tr>
                 <!-- A virer jusque là --> 
             </table>
         </div>

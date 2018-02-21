@@ -23,7 +23,7 @@ public class ServicesProgramme {
        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
         
-        Query q = session.createQuery("Select * from programme");
+        Query q = session.createQuery("from Programme");
         List<Programme> result = q.list();
         System.out.println("On a donc  ---------------- " + result);
         
@@ -33,9 +33,7 @@ public class ServicesProgramme {
         return result;
     }
       public static void main(String[] args) {
-          System.out.println("Jean Paul");
-          ServicesProgramme.afficherProgramme();
-          System.out.println("Jean Jaques");
+          System.out.println(ServicesProgramme.afficherProgramme());
     }
      
 }

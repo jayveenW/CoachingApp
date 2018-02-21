@@ -14,10 +14,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="typeProgramme">Type de programme</label>
-                    <select class="form-control" name="typeProgramme" id="typeProgramme">
-                        <!-- Options à insérer. Merci le backend -->                        
-                    </select>
+                    <label for="profils">Profils correspondant au programme</label>
+                    <input type="checkbox" class="form-control" name="profils" id="profils">
+                        <!-- Options à insérer. Merci le backend -->                                            
+                </div>
+            
+                <div class="form-group">
+                    <label for="sequences">Sequences du programme</label>
+                    <input type="checkbox" class="form-control" name="sequences" id="sequences">
+                        <!-- Options à insérer. Merci le backend -->                                            
                 </div>
 
                 <input class="btn btn-default" type="submit" value="Creer un programme" />
