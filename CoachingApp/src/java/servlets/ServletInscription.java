@@ -38,7 +38,6 @@ public class ServletInscription extends HttpServlet {
      * @throws IOException
      */
     @Override
-    @SuppressWarnings("empty-statement")
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = null;
         Map<String, String> erreurs = new HashMap<>();

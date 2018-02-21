@@ -33,8 +33,8 @@ public class ServletLogin extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = null;
         Map<String, String> erreurs = new HashMap<>(); // Pas obligatoire mais permet de gérer les erreurs dans 
         // une hashmap pour les afficher apres.
@@ -49,7 +49,8 @@ public class ServletLogin extends HttpServlet {
         boolean result = loginService.authenticateUser(userId, password); // recup du résultat de la premiere methode du service
         Utilisateur user = loginService.getUserByUserId(userId); // recup du résultat de la deuxieme methode du service
         Role userRole = loginService.getRoleUtilisateur(user); // recup du reséultat de la troisieme methode du service
-        if (userId == null && password == null) {
+        
+        if (userId.isEmpty() || password.isEmpty()) {
             url = "Connexion";
             erreurs.put("Vide", "Veuillez renseigner les champs");
             request.setAttribute(CHAMP_ERR, erreurs);
@@ -83,43 +84,8 @@ public class ServletLogin extends HttpServlet {
         rd.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
