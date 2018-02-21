@@ -9,9 +9,60 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Inscription</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+    <form method="post" action="ServletInscription">
+        <div style="padding: 100px 0 0 250px;">
+            <div id="login-box">
+                <h2>Inscription</h2>
+                Entrez vos informations personnelles
+                <br>
+                <br>
+
+                <div id="login-box-name" style="margin-top:20px;">Nom :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input name="nomCli" class="form-login" value="" size="30" maxlength="50" />
+                </div>
+
+                <div id="login-box-name" style="margin-top:20px;">Prénom :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input name="prenomCli" class="form-login" value="" size="30" maxlength="50" />
+                </div>
+
+                <div id="login-box-name" style="margin-top:20px;">Date de naissance :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input type="date" name="dateCli" class="form-login" value="" size="30" maxlength="50" />
+                </div>
+
+                <div id="login-box-name" style="margin-top:20px;">Mail :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input type="tel" name="telCli" class="form-login" value="" size="30" maxlength="50" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+
+                </div>
+
+                <div id="login-box-name" style="margin-top:20px;">Mail :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input type="email" name="mailCli" class="form-login" value="" size="30" maxlength="50" />
+                </div>
+
+                <div id="login-box-name" style="margin-top:20px;">Mot de passe :</div>
+                <div id="login-box-field" style="margin-top:20px;">
+                    <input type="password" name="mdpCli" class="form-login" value="" size="30" maxlength="50" />
+                </div>
+
+                <br />
+                <br />
+                <input style="margin-left:100px;" type="submit" value="S'inscrire" />
+
+                <br />
+
+                <span class="login-box-options">
+                    <a href="Connexion" style="margin-left:30px;">Annuler l'inscription</a>
+                </span>
+                <span class="error">${erreurs['incorrect']}</span>
+                <span class="error">${erreurs['invalide']}</span>
+            </div>
+        </div>
+    </form>
+</body>
 </html>
