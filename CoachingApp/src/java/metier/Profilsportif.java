@@ -15,6 +15,7 @@ public class Profilsportif  implements java.io.Serializable {
      private Integer idProfilSportif;
      private String libelleProfilSportif;
      private Set<Client> clients = new HashSet<Client>(0);
+     private Set<Programme> programmes = new HashSet<Programme>(0);
 
     public Profilsportif() {
     }
@@ -23,7 +24,15 @@ public class Profilsportif  implements java.io.Serializable {
        this.libelleProfilSportif = libelleProfilSportif;
        this.clients = clients;
     }
-   
+
+    public Set<Programme> getProgrammes() {
+        return programmes;
+    }
+
+    public void setProgrammes(Set<Programme> programmes) {
+        this.programmes = programmes;
+    }
+    
     public Integer getIdProfilSportif() {
         return this.idProfilSportif;
     }

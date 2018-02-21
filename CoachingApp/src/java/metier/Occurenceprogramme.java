@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public class Occurenceprogramme  implements java.io.Serializable {
 
-
      private Integer idOccProgramme;
      private Programme programme;
      private String etatOccProgramme;

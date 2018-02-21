@@ -14,6 +14,7 @@ public class Programme  implements java.io.Serializable {
 
      private Integer idProgramme;
      private String libelleProgramme;
+     private Profilsportif profilSportif;
      private Set<Occurenceprogramme> occurenceprogrammes = new HashSet<Occurenceprogramme>(0);
 
     public Programme() {
@@ -38,6 +39,16 @@ public class Programme  implements java.io.Serializable {
     public void setLibelleProgramme(String libelleProgramme) {
         this.libelleProgramme = libelleProgramme;
     }
+
+    public Profilsportif getProfilSportif() {
+        return profilSportif;
+    }
+
+    public void setProfilSportif(Profilsportif profilSportif) {
+        this.profilSportif = profilSportif;
+    }
+    
+    
     public Set<Occurenceprogramme> getOccurenceprogrammes() {
         return this.occurenceprogrammes;
     }

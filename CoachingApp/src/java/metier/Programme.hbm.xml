@@ -11,6 +11,9 @@
         <property name="libelleProgramme" type="string">
             <column name="libelleProgramme" length="25" />
         </property>
+        <many-to-one name="profilsportif" class="metier.Profilsportif" fetch="select">
+            <column name="idProfilSportif" />
+        </many-to-one>
         <set name="occurenceprogrammes" table="occurenceprogramme" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idProgramme" />

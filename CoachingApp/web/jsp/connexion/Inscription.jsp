@@ -34,15 +34,15 @@
                     <input type="date" name="dateCli" class="form-login" value="" size="30" maxlength="50" />
                 </div>
 
-                <div id="login-box-name" style="margin-top:20px;">Mail :</div>
+                <div id="login-box-name" style="margin-top:20px;">Téléphone :</div>
                 <div id="login-box-field" style="margin-top:20px;">
-                    <input type="tel" name="telCli" class="form-login" value="" size="30" maxlength="50" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+                    <input type="tel" name="telCli" class="form-login" value="" placeholder="00-00-00-00-00" size="30" maxlength="50" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
 
                 </div>
 
                 <div id="login-box-name" style="margin-top:20px;">Mail :</div>
                 <div id="login-box-field" style="margin-top:20px;">
-                    <input type="email" name="mailCli" class="form-login" value="" size="30" maxlength="50" />
+                    <input type="email" name="mailCli" class="form-login" value="" placeholder="exemple@gmail.com" size="30" maxlength="50" pattern="/^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/" />
                 </div>
 
                 <div id="login-box-name" style="margin-top:20px;">Mot de passe :</div>

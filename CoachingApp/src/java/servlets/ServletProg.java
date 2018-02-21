@@ -54,9 +54,9 @@ public class ServletProg extends HttpServlet {
 
         if (erreurs.isEmpty()) {
             session.setAttribute("listId", listId);
-            url = "ConfSupp";
+            url = "Progs";
         } else {
-            url = "SupMsg";
+            url = "AjouterProg";
         }
         rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
