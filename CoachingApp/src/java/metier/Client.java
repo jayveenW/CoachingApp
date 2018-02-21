@@ -19,7 +19,7 @@ public class Client implements java.io.Serializable {
     private String statutClient;
     private String mailClient;
     private String motDePasseClient;
-    private Integer telephoneClient;
+    private String telephoneClient;
     private String typeAbonnementClient;
     private Integer idProfilSportif;
     private Set<Mesurer> mesurers = new HashSet<Mesurer>(0);
@@ -33,7 +33,7 @@ public class Client implements java.io.Serializable {
     }
 
     // Constructeur pour inscription d'un client
-    public Client(String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, Integer telephoneClient) {
+    public Client(String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, String telephoneClient) {
         this.nomCli = nomCli;
         this.prenomClient = prenomClient;
         this.dateNaissanceClient = dateNaissanceClient;
@@ -43,7 +43,7 @@ public class Client implements java.io.Serializable {
         this.telephoneClient = telephoneClient;
     }
 
-    public Client(Coach coach, String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, Integer telephoneClient, String typeAbonnementClient, Integer idProfilSportif, Set<Mesurer> mesurers, Set<Communiquer> communiquers, Set<Profilsportif> profilsportifs, Set<Occseance> occseances, Set<Suivre> suivres, Set<Piecejointe> piecejointes) {
+    public Client(Coach coach, String nomCli, String prenomClient, Date dateNaissanceClient, String statutClient, String mailClient, String motDePasseClient, String telephoneClient, String typeAbonnementClient, Integer idProfilSportif, Set<Mesurer> mesurers, Set<Communiquer> communiquers, Set<Profilsportif> profilsportifs, Set<Occseance> occseances, Set<Suivre> suivres, Set<Piecejointe> piecejointes) {
         this.coach = coach;
         this.nomCli = nomCli;
         this.prenomClient = prenomClient;
@@ -126,11 +126,11 @@ public class Client implements java.io.Serializable {
         this.motDePasseClient = motDePasseClient;
     }
 
-    public Integer getTelephoneClient() {
+    public String getTelephoneClient() {
         return this.telephoneClient;
     }
 
-    public void setTelephoneClient(Integer telephoneClient) {
+    public void setTelephoneClient(String telephoneClient) {
         this.telephoneClient = telephoneClient;
     }
 

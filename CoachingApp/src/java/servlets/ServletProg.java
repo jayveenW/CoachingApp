@@ -33,8 +33,7 @@ public class ServletProg extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String url = null;
         Map<String, String> erreurs = new HashMap<>();
@@ -69,4 +68,8 @@ public class ServletProg extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
