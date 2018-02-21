@@ -21,11 +21,11 @@
                     <br>
                     <div id="login-box-name" style="margin-top:20px;">Identifiant (Adresse mail) :</div>
                     <div id="login-box-field" style="margin-top:20px;">
-                        <input name="userId" class="form-login" title="Username" value="" size="30" maxlength="50" />
+                        <input name="userId" class="form-login" value="" size="30" placeholder="exemple@gmail.com" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z]{2,10}" />
                     </div>
                     <div id="login-box-name">Password :</div>
                     <div id="login-box-field">
-                        <input name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="48" />
+                        <input name="password" type="password" class="form-login" value="" size="30" maxlength="48" />
                     </div>
                     <br />
                     <span class="login-box-options">
@@ -35,6 +35,7 @@
                     <br />
                     <input style="margin-left:100px;" type="submit" value="Login" />
                     <span class="error">${erreurs['idFaux']}</span>
+                    <span class="error">${erreurs['Vide']}</span>
                     <span class="success">${erreurs['Valide']}</span>
                 </div>
             </div>
