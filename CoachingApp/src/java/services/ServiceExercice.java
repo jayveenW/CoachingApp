@@ -107,10 +107,35 @@ public class ServiceExercice {
         return listeCat;
     }
     
-     /*public static void main (String[] args)
+    public static ArrayList<Exercice> getListeExercice() {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        ArrayList<Exercice> listeExo = null;
+             
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+
+            Query query = session.createQuery("from exercice");
+            listeExo = (ArrayList<Exercice>) query.list();
+
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
+            System.out.println(e.getMessage());
+        /*} finally {
+            session.close();
+        */}
+
+        return listeExo;
+    }
+    
+     public static void main (String[] args)
     {
         System.out.println("hello world");
-        ServiceExercice.getListeCategorie();
+        ServiceExercice.getListeExercice();
         System.out.println("oki");
-    }*/
+    }
 }
