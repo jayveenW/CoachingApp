@@ -12,13 +12,9 @@ function categorieExercice (){
         // Objet XMLHttpRequest.
 	var xhr = getXMLHttpRequest();
         var elt = document.getElementById("catExo");
-	// On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
 	xhr.onreadystatechange = function(){
-            // Si l'on a tout reçu et que la requête http s'est bien passée.
             if (xhr.readyState === 4 && xhr.status === 200){
-                //xmlDoc est un objet XML
 		var xmlDoc = xhr.responseXML;
-                //getElementsByTagName renvoie tous les noeuds qui s'appelle "nom"
                 var myNodeNames = xmlDoc.getElementsByTagName("categorie");
                 var content = "";
                 for (let oneNodename of myNodeNames) {
@@ -27,8 +23,6 @@ function categorieExercice (){
 		elt.innerHTML = content;
             }
         };
-
-	// Requête au serveur avec les paramètres éventuels.
 	xhr.open("GET","ServletCategorieExercice",true);
 	xhr.send(null); 
 }

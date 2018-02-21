@@ -3,6 +3,7 @@
     Created on : 21 févr. 2018, 05:48:57
     Author     : Bastien
 --%>
+<%@page import="services.ServiceExercice"%>
 <%@include file="../includes/headerCoach.jsp" %>
     <div class="row">
         <div class="col-lg-12">
@@ -40,13 +41,9 @@
                                 <td class="center">X</td>
                             </tr>
                             <%!
-                               /* private final Logger logger = new Logger(this.getClass());
-                                private UserService userService = null;
-                                public void jspInit() {
-                                    userService = new UserService();
-                                }
-                                private String getUserStatus(String userID) {
-                                    return userServce.getUserStatus(userID);
+                               /*ServiceExercice se = new ServiceExercice();
+                               for (Categorieexercice cati : test){
+                                    System.out.println(cati.getLibelleCategorieExercice());
                                 }*/
                             %>
                         </tbody>

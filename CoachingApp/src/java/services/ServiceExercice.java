@@ -6,6 +6,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 import metier.Categorieexercice;
 import metier.Exercice;
 import metier.HibernateUtil;
@@ -83,18 +84,18 @@ public class ServiceExercice {
         return catExo;
     }
     
-    public static ArrayList<Categorieexercice> getListeCategorie() {
+    public static List<Categorieexercice> getListeCategorie() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
-        ArrayList<Categorieexercice> listeCat = null;
+        List<Categorieexercice> listeCat = new ArrayList<>();
              
         try {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from categorieexercice");
-            listeCat = (ArrayList<Categorieexercice>) query.list();
+            Query query = session.createQuery("from Categorieexercice");
+            listeCat = query.list();
 
             tx.commit();
         } catch (Exception e) {
@@ -107,35 +108,37 @@ public class ServiceExercice {
         return listeCat;
     }
     
-    public static ArrayList<Exercice> getListeExercice() {
+    public static List<Exercice> getListeExercice() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
-        ArrayList<Exercice> listeExo = null;
+        List<Exercice> listeCat = new ArrayList<>();
              
         try {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from exercice");
-            listeExo = (ArrayList<Exercice>) query.list();
+            Query query = session.createQuery("from Exercice");
+            listeCat = query.list();
 
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            e.getMessage();
-            System.out.println(e.getMessage());
+            System.out.println("Erreur sur la transaction, pb SQL d'insertion d'un exo");
         } finally {
             session.close();
         }
 
-        return listeExo;
+        return listeCat;
     }
     
      public static void main (String[] args)
     {
         System.out.println("hello world");
-        ServiceExercice.getListeExercice();
-        System.out.println("oki");
+        List<Categorieexercice> test = ServiceExercice.getListeCategorie();
+        for (Categorieexercice cati : test){
+            System.out.println(cati.getLibelleCategorieExercice());
+        }
+        
     }
 }
