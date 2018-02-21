@@ -67,7 +67,7 @@ public class ServiceExercice {
             tx = session.getTransaction();
             tx.begin();
 
-            Query query = session.createQuery("from categorieexercice where libelleCategorieExercice like '" + catExercice + "'");
+            Query query = session.createQuery("from Categorieexercice where libelleCategorieExercice like '" + catExercice + "'");
             catExo = (Categorieexercice) query.uniqueResult();
 
             tx.commit();
@@ -84,7 +84,7 @@ public class ServiceExercice {
         return catExo;
     }
     
-    public static List<Categorieexercice> getListeCategorie() {
+    public List<Categorieexercice> getListeCategorie() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -108,7 +108,7 @@ public class ServiceExercice {
         return listeCat;
     }
     
-    public static List<Exercice> getListeExercice() {
+    public List<Exercice> getListeExercice() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -125,9 +125,9 @@ public class ServiceExercice {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erreur sur la transaction, pb SQL d'insertion d'un exo");
-        } finally {
+        }/* finally {
             session.close();
-        }
+        }*/
 
         return listeCat;
     }
@@ -135,10 +135,16 @@ public class ServiceExercice {
      public static void main (String[] args)
     {
         System.out.println("hello world");
-        List<Categorieexercice> test = ServiceExercice.getListeCategorie();
+        ServiceExercice se = new ServiceExercice();
+        /*List<Categorieexercice> test = se.getListeCategorie();
         for (Categorieexercice cati : test){
             System.out.println(cati.getLibelleCategorieExercice());
-        }
+        }*/
+        /*List<Exercice> test = se.getListeExercice();
+        for (Exercice ex : test){
+            System.out.println(ex.getCategorieexercice().getLibelleCategorieExercice());
+        }*/
+        System.out.println(se.recupObjetCatExo("Fessiers").getIdCategorieExercice());
         
     }
 }

@@ -7,6 +7,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,21 +34,19 @@ public class ServletAjoutExercice extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = null;
-
+        String url = "";
         // Chainage direct vers les JSP
         RequestDispatcher rd;
 
         // Récup des données du formulaire
-        String catEx = request.getParameter("catExo");
-        String libEx = request.getParameter("libelleExo");
-        String nivEx = request.getParameter("niveauExo");
-        String descEx = request.getParameter("descriptifExo");
-        String photoEx = request.getParameter("photoExo");
-        String vidEx = request.getParameter("videoExo");
-        String recoEx = request.getParameter("recommandationExo");
+        String catEx = ("".equals(request.getParameter("catExo")))? "" : request.getParameter("catExo");
+        String libEx = ("".equals(request.getParameter("libelleExo")))? "" : request.getParameter("libelleExo");
+        String nivEx = ("".equals(request.getParameter("niveauExo")))? "" : request.getParameter("niveauExo");
+        String descEx = ("".equals(request.getParameter("descriptifExo")))? "" : request.getParameter("descriptifExo");
+        String photoEx = ("".equals(request.getParameter("photoExo")))? "" : request.getParameter("photoExo");
+        String vidEx = ("".equals(request.getParameter("videoExo")))? "" : request.getParameter("videoExo");
+        String recoEx = ("".equals(request.getParameter("recommandationExo")))? "" : request.getParameter("recommandationExo");
         String textInfo = "L'exercice " + libEx;
-
         ServiceExercice servExo = new ServiceExercice(); // Instanciation du service
         Categorieexercice catExo = servExo.recupObjetCatExo(catEx);
         boolean result = servExo.enrExerciceBD(catExo, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
@@ -54,11 +54,11 @@ public class ServletAjoutExercice extends HttpServlet {
         if (result == true) {
             textInfo += " a bien été inséré dans la catégorie " + catEx;
             request.getSession().setAttribute("info", textInfo);
-            url = "PAGE";
+            url = "AfficherExercice";
         } else {
             textInfo += " n'a pas pu être inséré dans la catégorie " + catEx;
             request.getSession().setAttribute("info", textInfo);
-            url = "PAGE";
+            url = "AfficherExercice";
         }
 
         // Redirection
