@@ -20,12 +20,11 @@ public class ServicesProgramme {
      public static List <Programme> afficherProgramme(){
         
       //  Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-       Session session = HibernateUtil.getSessionFactory().openSession();
+       Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         
         Query q = session.createQuery("from Programme");
         List<Programme> result = q.list();
-        System.out.println("On a donc  ---------------- " + result);
         
         
         t.commit();
