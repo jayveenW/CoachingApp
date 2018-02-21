@@ -44,7 +44,7 @@ Contributor(s):
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://mysql-coachingapp.alwaysdata.net:3306/coachingapp_db?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">153491</property>
+    <property name="hibernate.connection.username">153491_bastien</property>
     <property name="hibernate.connection.password">bojae2018</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>

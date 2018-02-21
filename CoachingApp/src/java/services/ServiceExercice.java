@@ -125,9 +125,9 @@ public class ServiceExercice {
             e.printStackTrace();
             e.getMessage();
             System.out.println(e.getMessage());
-        /*} finally {
+        } finally {
             session.close();
-        */}
+        }
 
         return listeExo;
     }

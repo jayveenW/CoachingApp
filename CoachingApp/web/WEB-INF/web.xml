@@ -40,6 +40,10 @@
         <servlet-name>HeaderCoach</servlet-name>
         <jsp-file>/jsp/includes/headerCoach.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>AfficherExercice</servlet-name>
+        <jsp-file>/jsp/coach/AfficherExercice.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>HeaderCoach</servlet-name>
         <url-pattern>/HeaderCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherExercice</servlet-name>
+        <url-pattern>/AfficherExercice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
