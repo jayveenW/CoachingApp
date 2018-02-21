@@ -7,6 +7,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,21 +31,21 @@ public class ServletCategorieExercice extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServiceExercice servExo = new ServiceExercice(); // Instanciation du service
+        List<Categorieexercice> listeCat = servExo.getListeCategorie();
         String resultat = "<?xml version=\"1.0\"?><liste_categories>";
         response.setContentType("application/xml;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()){
             try {
-                for (Categorieexercice cat : servExo.getListeCategorie()){
+                for (Categorieexercice cat : listeCat){
                     resultat += "<categorie>" + cat.getLibelleCategorieExercice() + "</categorie>";
-                } 
+                }  
             }catch (Exception ex){
                 resultat += ("<categorie>Erreur - " + ex.getMessage() + "</categorie>");
             }
-            resultat += ("</liste_citation>");
+            resultat += ("</liste_categories>");
             out.println(resultat);
         }
     }

@@ -21,6 +21,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="/CoachingApp/stylesheets/dist/js/sb-admin-2.js"></script>
+    <script src="/CoachingApp/javascript/Ajax.js"></script>
 
 </body>
 

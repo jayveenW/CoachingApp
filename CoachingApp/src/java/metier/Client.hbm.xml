@@ -29,7 +29,7 @@
         <property name="motDePasseClient" type="string">
             <column name="motDePasseClient" length="25" />
         </property>
-        <property name="telephoneClient" type="java.lang.Integer">
+        <property name="telephoneClient" type="string">
             <column name="telephoneClient" />
         </property>
         <property name="typeAbonnementClient" type="string">

@@ -9,17 +9,17 @@
             <form action="ServletAjoutExercice" method="POST" id="formExo">
                 <div class="form-group">
                     <label for="catExo">Catégorie de l'exercice</label>
-                    <select class="form-control" id="catExo">
+                    <select class="form-control" id="catExo" onclick="categorieExercice()">
                       <option></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="libelleExo">Libellé de l'exercice</label>
-                    <input type="text" class="form-control" id="libelleExo" placeholder="...">
+                    <input type="text" class="form-control" id="libelleExo" placeholder="..." required>
                 </div>
                 <div class="form-group">
                     <label for="niveauExo">Niveau de l'exercice</label>
-                    <select class="form-control" id="niveauExo">
+                    <select class="form-control" id="niveauExo" required>
                       <option>Débutant</option>
                       <option>Confirmé</option>
                       <option>Expert</option>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="descriptifExo">Descriptif de l'exercice</label>
-                    <textarea class="form-control" id="descriptifExo" rows="3"></textarea>
+                    <textarea class="form-control" id="descriptifExo" rows="3" required></textarea>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -56,8 +56,9 @@
             </form>
         </div>
     </div>
+    <%@include file="../includes/footer.jsp" %>
     <script type="text/javascript">
-$(document).ready(function() {  
+/*$(document).ready(function() {  
     $.ajax({
        url : 'ServletCategorieExercice',
        type : 'POST',
@@ -68,7 +69,5 @@ $(document).ready(function() {
            });
            $("#formExo :select :first").html(texte);
        });
-});
+});*/
     </script>
-<%@include file="../includes/footer.jsp" %>
-
