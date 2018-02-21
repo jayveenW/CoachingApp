@@ -3,6 +3,7 @@
     Created on : 21 févr. 2018, 05:48:57
     Author     : Bastien
 --%>
+<%@page import="metier.Exercice"%>
 <%@page import="services.ServiceExercice"%>
 <%@include file="../includes/headerCoach.jsp" %>
     <div class="row">
@@ -16,7 +17,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Liste des exercices
+                    <a href="FormCreaExo"><button class="btn btn-warning"> + </button></a> : Ajouter un exercice
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -33,18 +34,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX">
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td class="center">4</td>
-                                <td class="center">X</td>
-                            </tr>
-                            <%!
-                               /*ServiceExercice se = new ServiceExercice();
-                               for (Categorieexercice cati : test){
-                                    System.out.println(cati.getLibelleCategorieExercice());
-                                }*/
+                            <%
+                               ServiceExercice se = new ServiceExercice();
+                               String resultat = "<tr class=\"odd gradeX\">";
+                               for (Exercice exo : se.getListeExercice()){
+                                   resultat += "<td>"+exo.getCategorieexercice().getLibelleCategorieExercice()+"</td>"+
+                                   "<td>"+exo.getLibelleExercice()+"</td>" +
+                                   "<td>"+exo.getNiveauExercice()+"</td>" +
+                                   "<td>"+exo.getDescriptifExercice()+"</td>" +
+                                   "<td>"+exo.getPhotoExercice()+"</td>" +
+                                   "<td>"+exo.getVideoExercice()+"</td>"+
+                                   "<td>"+exo.getRecommandationExercice()+"</td>";
+                                   resultat += "</tr>";
+                               }
+                               out.println(resultat);
                             %>
                         </tbody>
                     </table>

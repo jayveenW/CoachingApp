@@ -8,24 +8,9 @@
  * Méthode qui retourne l'objet XMLHttpRequest en fonction du navigateur.
  */
 
-function categorieExercice (){
-        // Objet XMLHttpRequest.
-	var xhr = getXMLHttpRequest();
-        var elt = document.getElementById("catExo");
-	xhr.onreadystatechange = function(){
-            if (xhr.readyState === 4 && xhr.status === 200){
-		var xmlDoc = xhr.responseXML;
-                var myNodeNames = xmlDoc.getElementsByTagName("categorie");
-                var content = "";
-                for (let oneNodename of myNodeNames) {
-                    content += "<option>" + oneNodename.firstChild.nodeValue + "</option>";
-                } 
-		elt.innerHTML = content;
-            }
-        };
-	xhr.open("GET","ServletCategorieExercice",true);
-	xhr.send(null); 
-}
+/*function test(){
+    alert(document.getElementById("catExo").value);
+}*/
 
 function getXMLHttpRequest()
 {
