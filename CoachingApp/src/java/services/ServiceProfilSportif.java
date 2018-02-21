@@ -39,9 +39,17 @@ public class ServiceProfilSportif {
                 tx.rollback();
             }
             e.printStackTrace();
-        } 
+        }
 
         return profils;
     }
-    
+
+    public static void main(String[] args) {
+        System.out.println("hello world");
+        ServiceProfilSportif sps = new ServiceProfilSportif();
+        for (Profilsportif ps : sps.recupProfils()) {
+            System.out.println(ps.getLibelleProfilSportif());
+        }
+
+    }
 }
