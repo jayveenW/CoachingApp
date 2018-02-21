@@ -45,18 +45,19 @@ public class ServletLogin extends HttpServlet {
         String userId = request.getParameter("userId"); // Recup le champ du formulaire userId
         String password = request.getParameter("password"); // Recup le champ du formulaire password
 
-        ServiceLogin loginService = new ServiceLogin(); // INSTANCIATION du service
-        boolean result = loginService.authenticateUser(userId, password); // recup du résultat de la premiere methode du service
-        Utilisateur user = loginService.getUserByUserId(userId); // recup du résultat de la deuxieme methode du service
-        Role userRole = loginService.getRoleUtilisateur(user); // recup du reséultat de la troisieme methode du service
-        
         if (userId.isEmpty() || password.isEmpty()) {
             url = "Connexion";
             erreurs.put("Vide", "Veuillez renseigner les champs");
             request.setAttribute(CHAMP_ERR, erreurs);
         } else {
-
+            
+            ServiceLogin loginService = new ServiceLogin(); // INSTANCIATION du service
+            boolean result = loginService.authenticateUser(userId, password); // recup du résultat de la premiere methode du service
+            Utilisateur user = loginService.getUserByUserId(userId); // recup du résultat de la deuxieme methode du service
+            Role userRole = loginService.getRoleUtilisateur(user); // recup du reséultat de la troisieme methode du service
+            
             if (result == true) {
+
                 request.getSession().setAttribute("user", user); // La session prend l'utilisateur connecté en paramètre
                 if (null != userRole.getLibelleRole()) {
                     switch (userRole.getLibelleRole()) {
