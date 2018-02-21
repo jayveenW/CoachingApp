@@ -21,7 +21,11 @@ public class Seance  implements java.io.Serializable {
     public Seance() {
     }
 
-	
+    public Seance(String libelleSeance, String profilSeance){
+    this.libelleSeance = libelleSeance;
+    this.profilSeance = profilSeance; 
+    }
+    
     public Seance(String libelleSeance) {
         this.libelleSeance = libelleSeance;
     }
