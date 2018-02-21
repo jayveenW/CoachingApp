@@ -61,14 +61,25 @@ public class Client implements java.io.Serializable {
         this.suivres = suivres;
         this.piecejointes = piecejointes;
     }
-    
-        public Client(String nomCli, String prenomClient, String mailClient, String telephoneClient, String typeAbonnementClient) {
-       this.nomCli = nomCli;
-       this.prenomClient = prenomClient;
-       this.mailClient = mailClient;
-       this.telephoneClient = telephoneClient;
-       this.typeAbonnementClient = typeAbonnementClient;
+
+    public Client(String nomCli, String prenomClient, String mailClient, String telephoneClient, String typeAbonnementClient) {
+        this.nomCli = nomCli;
+        this.prenomClient = prenomClient;
+        this.mailClient = mailClient;
+        this.telephoneClient = telephoneClient;
+        this.typeAbonnementClient = typeAbonnementClient;
     }
+
+    public Client(String nomCli, String prenomClient, String mailClient, Date dateNaissance, String telephoneClient, String typeAbonnementClient, String statut) {
+        this.nomCli = nomCli;
+        this.prenomClient = prenomClient;
+        this.mailClient = mailClient;
+        this.telephoneClient = telephoneClient;
+        this.statutClient =  statut;
+        this.dateNaissanceClient = dateNaissance;
+        this.typeAbonnementClient = typeAbonnementClient;
+    }
+
     public Integer getIdClient() {
         return this.idClient;
     }

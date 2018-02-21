@@ -1,6 +1,5 @@
-<%@include file="Header" %>
+<%@include file="header.jsp" %>
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -228,8 +227,8 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#">
-                                <i class="fa fa-user">
+                            <a href="#" class="text-center">
+                                <i class="fa fa-user"></i>
                                     <p>Demo</p>
                             </a>
                         </li>

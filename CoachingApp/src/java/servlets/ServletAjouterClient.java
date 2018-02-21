@@ -6,15 +6,15 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.Client;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import services.ServicesClient;
@@ -36,37 +36,41 @@ public class ServletAjouterClient extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-       // Date d = new SimpleDateFormat("yyyy/MM/DD");
-        
+        // Date d = new SimpleDateFormat("yyyy/MM/DD");
+
         String Nom = request.getParameter("Nom");
         String Prenom = request.getParameter("Prenom");
         String Mail = request.getParameter("Mail");
-       // int Telephone = Integer.parseInt(request.getParameter("Telephone"));
+        String ageNonParse = request.getParameter("Age");
+        // int Telephone = Integer.parseInt(request.getParameter("Telephone"));
         String Telephone = request.getParameter("Telephone");
-        String Age = request.getParameter("Age");
-        String Profil = request.getParameter("Profil");
+        Integer Profil = Integer.parseInt(request.getParameter("Profil"));
         String Typeab = request.getParameter("Typeab");
-        
+
         try {
-                System.out.println("Jean Jaques");
-                Client cli = new Client();
-                cli.setNomCli(Nom);
-                cli.setPrenomClient(Prenom);
-                cli.setMailClient(Mail);
-                cli.setTelephoneClient(Telephone);
-           //     cli.setDateNaissanceClient(Age).parse(Date);
-           //     cli.setProfilsportifs(Profil);
-                cli.setTypeAbonnementClient(Typeab);
-               
-               ServicesClient.ajoutClient(cli);
-               System.out.println("Le fort");
-            } 
-        catch (Exception ex) {
-            throw new Exception("Problème d'objet ou bdd "+ex.getMessage()); 
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            try{
+            Date Age = df.parse(ageNonParse);}
+            catch(Exception e){
+                System.out.println(e);
             }
-         RequestDispatcher rd = request.getRequestDispatcher("AfficherClient");
-            rd.forward(request, response);
-        
+            Client cli = new Client();
+            cli.setNomCli(Nom);
+            cli.setPrenomClient(Prenom);
+            cli.setMailClient(Mail);
+            cli.setTelephoneClient(Telephone);
+            cli.setDateNaissanceClient(Age);
+            //cli.getProfilsportifs().add();
+            cli.setTypeAbonnementClient(Typeab);
+            cli.setStatutClient("En attente");
+            ServicesClient.ajoutClient(cli);
+
+        } catch (Exception ex) {
+            throw new Exception("Problème d'objet ou bdd " + ex.getMessage());
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("AfficherClient");
+        rd.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

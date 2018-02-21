@@ -1,4 +1,4 @@
-<%@include file="Header" %>
+<%@include file="header.jsp" %>
     <div id="wrapper">
 
         <!-- Navigation -->
