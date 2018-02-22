@@ -19,7 +19,7 @@
             <form action="ServletCompleterSeance" method="POST">
             <%
                 out.println(session.getAttribute("idSeance"));
-                for(int i=0;i<7;i++)
+                for(int i=0;i<5;i++)
                 {
                     out.println("<div class=\"form-row\">");
                     out.println("<div class=\"form-group col-md-6\">");

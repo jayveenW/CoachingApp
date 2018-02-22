@@ -65,21 +65,18 @@ public class ServiceSeance {
     }
     
     
-    public boolean enrComposer(ArrayList<ComposerId> coIdList, int nbSerie, int nbRepetition)
+    public boolean enrComposer(ComposerId coIdList, int nbSerie, int nbRepetition)
     {
         boolean insert = false;
-        Session session = HibernateUtil.openSession();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = null;
         try {
             tx = session.getTransaction();
             tx.begin();
             
-            for(int i = 0;i<coIdList.size();i++)
-            {
-                session.save(coIdList.get(i));
-                Composer com = new Composer(coIdList.get(i), nbSerie, nbRepetition);
+                Composer com = new Composer(coIdList, nbSerie, nbRepetition);
                 session.save(com);
-            }
+            
             
             tx.commit();
 
@@ -96,17 +93,18 @@ public class ServiceSeance {
     public static void main(String[] args)
     {
         ArrayList<ComposerId> coList = new ArrayList<ComposerId>();
-        System.out.println("Flute ! ");
         ServiceSeance ss = new ServiceSeance();
         int id = ss.enrSeance("Tonique", "Cardio");
         System.out.println(id);
-        System.out.println("Zut ! ");
+        
         ComposerId ci1 = new ComposerId(1, 1, 1, 1);
+        System.out.println("oups");
         ComposerId ci2 = new ComposerId(2, 1, 1, 2);
+        System.out.println("oups2");
         coList.add(ci1);
         coList.add(ci2);
         
-        ss.enrComposer(coList, 2, 10);
+        //ss.enrComposer(coList, 2, 10);
         System.out.println("ça passe ici");
     }
 }

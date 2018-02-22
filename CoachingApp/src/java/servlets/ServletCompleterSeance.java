@@ -6,8 +6,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,30 +35,28 @@ public class ServletCompleterSeance extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
         ServiceSeance seSe = new ServiceSeance();
-        //Liste pour récupérer tous les objets ComposerId.
-        ArrayList<ComposerId> coIdList = new ArrayList<ComposerId>();
         int idSeance = (int)session.getAttribute("idSeance");
         Occseance os = new Occseance();
         int idOccSeance = seSe.recupIdOccSeance(os);
-        System.out.println("Passe ici");
-        for(int i = 0; i<7;i++)
+        for(int i = 0; i<5;i++)
         {
             String param = "exercice" + i;
-            if(request.getParameter(param).isEmpty())
+            if(!request.getParameter(param).isEmpty())
             {
-                System.out.println(param);
                 String idExercice = request.getParameter(param);
                 int idExo = Integer.parseInt(idExercice);
                 ComposerId ciD = new ComposerId(idExo, idOccSeance, idSeance, i);
-                coIdList.add(ciD);
+                String paramS = "nbSerie"+i;
+                String serie = request.getParameter(paramS);
+                int nbSerie = Integer.parseInt(serie);
+                String paramR = "nbRepetition"+i;
+                String repetition = request.getParameter(paramR);
+                int nbRepetition = Integer.parseInt(repetition);
+                seSe.enrComposer(ciD, nbSerie, nbRepetition);
             }    
             
         }
-        String serie = request.getParameter("nbSerie");
-        int nbSerie = Integer.parseInt(serie);
-        String repetition = request.getParameter("nbRepetition");
-        int nbRepetition = Integer.parseInt(repetition);
-        seSe.enrComposer(coIdList, nbSerie, nbRepetition);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
