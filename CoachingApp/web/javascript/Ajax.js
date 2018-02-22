@@ -95,51 +95,14 @@ function rechercherProgramme() {
 }
 
 /**
- * Cette méthode "Ajax" affiche la liste des auteurs.
- *
- * On utilise la propriété 'responseXML' de l'objet XMLHttpRequest afin
- * de récupérer sous forme d'arbre DOM le document XML envoyé par le serveur.
- */
-function l_auteurs()
-{
-    var xhr = getXMLHttpRequest();
-
-    xhr.onreadystatechange = function ()
-    {
-        // Si l'on a tout reçu et que la requête http s'est bien passée.
-        if (xhr.readyState === 4 && xhr.status === 200)
-        {
-            var i;
-            var xmlDoc = xhr.responseXML;
-            var tableau = xmlDoc.getElementsByTagName("nom");
-            var option = "<option>--</option>";
-
-            // Elément html que l'on va mettre à jour.
-            var elt = document.getElementById("lnom");
-
-            for (i = 0; i < tableau.length; i++) {
-                option += "<option>" + tableau[i].childNodes[0].nodeValue + "</option>";
-            }
-
-            elt.innerHTML = option;
-        }
-    };
-
-    // Requête au serveur avec les paramètres éventuels.
-    xhr.open("GET", "ServletAuteur", true);
-    xhr.send(null);
-}
-
-
-/**
- * Cette méthode "Ajax" affiche la liste des citations.
+ * Cette méthode affiche les séances et les exos.
  *
  * On utilise la propriété 'responseXML' de l'objet XMLHttpRequest afin
  * de récupérer sous forme d'arbre DOM le document XML envoyé par le serveur.
  */
 function l_maSeance()
 {
-    var nomauteur = document.getElementById("lnom").value;
+    var nomseance = document.getElementById("lseance").value;
 
     var xhr = getXMLHttpRequest();
 
@@ -150,25 +113,25 @@ function l_maSeance()
         {
             var i;
             var xmlDoc = xhr.responseXML;
-            var tableau = xmlDoc.getElementsByTagName("citation");
-            var lignes = "<ul>";
+            var tableau = xmlDoc.getElementsByTagName("exercice");
+            var lignes = "";
 
             // Elément html que l'on va mettre à jour.
-            var elt = document.getElementById("lcitations");
+            var elt = document.getElementById("maseance");
 
             for (i = 0; i < tableau.length; i++) {
-                lignes += "<li>" + tableau[i].childNodes[0].nodeValue + "</li>";
+                lignes += "<div>" + tableau[i].childNodes[0].nodeValue + "</div>";
             }
 
-            elt.innerHTML = lignes + "</ul>";
+            elt.innerHTML = lignes;
         }
     };
 
     // Requête au serveur avec les paramètres éventuels.
-    xhr.open("POST", "ServletCitation", true);
+    xhr.open("POST", "ServletMaSeance", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send("nomauteur=" + nomauteur);
-    console.log(nomauteur);
+    xhr.send("nomseance=" + nomseance);
+    console.log(nomseance);
 }
 
 
