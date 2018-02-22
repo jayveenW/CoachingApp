@@ -11,6 +11,19 @@
 /*function test(){
     alert(document.getElementById("catExo").value);
 }*/
+/*(function() {
+   document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
+        console.log("test");
+    }); 
+})*/
+
+function modalParam(button){
+    var id = button.getAttribute("id");
+    var elt = document.getElementById("parametre");
+    var url = "ServletSupprExercice?idExo="+id;
+    elt.href = url;
+    
+}
 
 function getXMLHttpRequest()
 {
