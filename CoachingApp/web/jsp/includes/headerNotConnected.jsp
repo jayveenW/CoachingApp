@@ -38,31 +38,18 @@
 
     </head>
 
-
-    <body>
-        <div id="wrapper" class='bg bgaccueil' >
+    <body style="background-image: url('../../ressources/images/workout-bg.jpeg'); ">
+        <div id="wrapper">
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">JD COACHING</a>
                 </div>
-            </nav>
-            
-            <!-- Page -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="jumbotron clearfix" id="welcomeMessage">
-                            <h1 class="display-4">Bienvenue sur JD Coaching !</h1>
-                            <hr class="my-4">
-                            <p class="lead">Vous êtes à un pas seulement d'un coaching sur mesure !</p>
-                            <p class="lead">
-                                <a class="btn btn-warning btn-md pull-right" href="Connexion" role="button">Se connecter <i class="glyphicon glyphicon-log-in"></i> </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
         </div>
-    </body>
-</html>
+    </nav>

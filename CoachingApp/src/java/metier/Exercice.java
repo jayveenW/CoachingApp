@@ -125,6 +125,16 @@ public class Exercice implements java.io.Serializable {
     public void setObjectifs(Set<Objectif> objectifs) {
         this.objectifs = objectifs;
     }
+    
+    public void setGlobal(Categorieexercice cat, String libelle, String niveau, String descriptif, String photo, String video, String recommandation) {
+        this.setCategorieexercice(cat);
+        this.setLibelleExercice(libelle);
+        this.setNiveauExercice(niveau);
+        this.setDescriptifExercice(descriptif);
+        this.setPhotoExercice(photo);
+        this.setVideoExercice(video);
+        this.setRecommandationExercice(recommandation);
+    }
 
     @Override
     public int hashCode() {
