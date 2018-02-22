@@ -34,6 +34,58 @@ public class ServiceExercice {
             session.save(exo);
 
             tx.commit();
+            enr = true;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL d'insertion d'un exo");
+        } finally {
+            session.close();
+        }
+
+        return enr;
+    }
+    
+    public boolean modifExerciceBD(int idEx, Categorieexercice catEx, String libEx, String nivEx, String descEx, String photoEx, String vidEx, String recoEx) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        boolean enr = false;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Exercice exo = (Exercice)session.get(Exercice.class, idEx);
+            exo.setGlobal(catEx, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
+            session.update(exo);
+            tx.commit();
+            enr = true;
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL d'insertion d'un exo");
+        } finally {
+            session.close();
+        }
+
+        return enr;
+    }
+    
+    public boolean supprExerciceBD(int idEx) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        boolean enr = false;
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Exercice exo = (Exercice)session.get(Exercice.class, idEx);
+            session.delete(exo);
+            tx.commit();
+            enr = true;
         } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
@@ -132,6 +184,33 @@ public class ServiceExercice {
         return listeCat;
     }
     
+    public Exercice getExercice(String idEx) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        Exercice exo = null;
+        int idExInt = Integer.parseInt(idEx);
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+
+            Query query = session.createQuery("from Exercice where idExercice = :id ");
+            query.setParameter("id", idExInt);
+            exo = (Exercice) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL d'insertion d'un exo");
+        }/* finally {
+            session.close();
+        }*/
+
+        return exo;
+    }
+    
      public static void main (String[] args)
     {
         System.out.println("hello world");
@@ -144,7 +223,8 @@ public class ServiceExercice {
         for (Exercice ex : test){
             System.out.println(ex.getCategorieexercice().getLibelleCategorieExercice());
         }*/
-        System.out.println(se.recupObjetCatExo("Fessiers").getIdCategorieExercice());
+        
+        System.out.println(se.getExercice("1").getLibelleExercice());
         
     }
 }

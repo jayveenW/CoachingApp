@@ -39,9 +39,10 @@
 </head>
 
 <body>
-    <div id="wrapper">
-
+    <div id="wrapper" class='bg bgconnexion'>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html">JD COACHING</a>
+            </div>
+        </nav>
