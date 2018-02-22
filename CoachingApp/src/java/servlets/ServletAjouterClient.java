@@ -10,14 +10,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import metier.Client;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import services.ServicesClient;
 
 /**
@@ -25,6 +24,10 @@ import services.ServicesClient;
  * @author OSoro
  */
 public class ServletAjouterClient extends HttpServlet {
+
+    public static final String CHAMP_INCO = "incorrect";
+    public static final String CHAMP_INV = "invalide";
+    public static final String CHAMP_ERR = "erreurs";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,91 +38,58 @@ public class ServletAjouterClient extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
-        // Date d = new SimpleDateFormat("yyyy/MM/DD");
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String url = null;
+        Map<String, String> erreurs = new HashMap<>();
+
+        // Chainage direct vers les JSP
+        RequestDispatcher rd;
 
         String Nom = request.getParameter("Nom");
         String Prenom = request.getParameter("Prenom");
         String Mail = request.getParameter("Mail");
         String ageNonParse = request.getParameter("Age");
-        // int Telephone = Integer.parseInt(request.getParameter("Telephone"));
         String Telephone = request.getParameter("Telephone");
-        Integer Profil = Integer.parseInt(request.getParameter("Profil"));
+        String Profil = request.getParameter("Profil");
         String Typeab = request.getParameter("Typeab");
 
+        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        Date Age = null;
         try {
-            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-            Date Age = new Date();
-            try{
-            Age = df.parse(ageNonParse);}
-            catch(ParseException e){
-                System.out.println(e);
-            }
-            Client cli = new Client();
-            cli.setNomCli(Nom);
-            cli.setPrenomClient(Prenom);
-            cli.setMailClient(Mail);
-            cli.setTelephoneClient(Telephone);
-            cli.setDateNaissanceClient(Age);
-            //cli.getProfilsportifs().add();
-            cli.setTypeAbonnementClient(Typeab);
-            cli.setStatutClient("En attente");
-            ServicesClient.ajoutClient(cli);
-
-        } catch (Exception ex) {
-            throw new Exception("Problème d'objet ou bdd " + ex.getMessage());
+            Age = df.parse(ageNonParse);
+        } catch (ParseException ex) {
+            System.out.println("La date n'a pas été parsée" + ex.getMessage());
+            erreurs.put("nonParse", "La date n'a pas été parsée " + ex.getMessage());
         }
-        RequestDispatcher rd = request.getRequestDispatcher("AfficherClient");
+
+        ServicesClient sc = new ServicesClient();
+        boolean result1 = sc.checkMailAdress(Mail);
+        
+        if (result1 = true) {
+            boolean result = sc.ajoutClient(Nom, Prenom, Mail, Telephone, Age, Typeab, Profil);
+            if (result == true) {
+                url = "AfficherClient";
+                erreurs.put("Valide", "L'ajout du client a bien été effectuée");
+                request.setAttribute(CHAMP_ERR, erreurs);
+            } else {
+                url = "AjouterClient";
+                erreurs.put(CHAMP_INCO, "Impossible d'insérer le client.");
+                request.setAttribute(CHAMP_ERR, erreurs);
+            }
+        } else {
+            url = "AjouterClient";
+            erreurs.put(CHAMP_INV, "Ce mail est déjà utilisé.");
+            request.setAttribute(CHAMP_ERR, erreurs);
+        }
+        
+        rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ServletAjouterClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ServletAjouterClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

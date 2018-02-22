@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.Client;
+import metier.Coach;
 import metier.Role;
 import metier.Utilisateur;
 import services.ServiceLogin;
@@ -25,6 +27,7 @@ public class ServletLogin extends HttpServlet {
 
     public static final String CHAMP_INCO = "idFaux";
     public static final String CHAMP_ERR = "erreurs";
+    public static final String CHAMP_VIDE = "Vide";
 
     /**
      *
@@ -47,7 +50,7 @@ public class ServletLogin extends HttpServlet {
 
         if (userId.isEmpty() || password.isEmpty()) {
             url = "Connexion";
-            erreurs.put("Vide", "Veuillez renseigner tous les champs");
+            erreurs.put(CHAMP_VIDE, "Veuillez renseigner tous les champs.");
             request.setAttribute(CHAMP_ERR, erreurs);
         } else {
             ServiceLogin loginService = new ServiceLogin(); // INSTANCIATION du service
@@ -55,14 +58,19 @@ public class ServletLogin extends HttpServlet {
 
             if (result == true) {
                 Utilisateur user = loginService.getUserByUserId(userId);
+
                 request.getSession().setAttribute("user", user); // La session prend l'utilisateur connecté en paramètre
 
                 for (Role r : user.getRoles()) {
                     if ("Administrateur".equals(r.getLibelleRole())) {
                         url = "ADMINJSP";
                     } else if ("Client".equals(r.getLibelleRole())) {
+                        Client client = loginService.getObjClient(userId);
+                        request.getSession().setAttribute("client", client);
                         url = "FormCreaExo";
                     } else if ("Coach".equals(r.getLibelleRole())) {
+                        Coach coach = loginService.getObjCoach(userId);
+                        request.getSession().setAttribute("coach", coach);
                         url = "COACHACCUEILJSP";
                     }
                 }
@@ -70,7 +78,6 @@ public class ServletLogin extends HttpServlet {
                 url = "Connexion";
                 Utilisateur user = new Utilisateur(userId, password);
                 request.setAttribute("pseudo", user.getMailUtilisateur());
-                request.setAttribute("pass", user.getMpdUtilisateur());
                 erreurs.put(CHAMP_INCO, "Les identifiants entrés sont incorrects.");
                 request.setAttribute(CHAMP_ERR, erreurs);
             }

@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <a class="btn btn-default pull-right" href="AjoutClient">Ajouter un client</a>
+        <a class="btn btn-default pull-right" href="AjouterClient">Ajouter un client</a>
     </div>
 </div>
 
@@ -26,14 +26,16 @@
                 <th>Prenom</th>
                 <th>Id sportif</th>
                 </thead>
+                <span class="error">${erreurs['incorrect']}</span>
+                <span class="error">${erreurs['invalide']}</span>
                 <!-- à virer par la suite --> 
                 <!-- Ajouter les liens pour accéder à modifier et supprimer --> 
 
                 <%
                     try {
                         for (Client cli : ServicesClient.afficherClient()) {
-                            String statut="";
-                            String tooltip="";
+                            String statut = "";
+                            String tooltip = "";
                             if (cli.getStatutClient() != null) {
                                 if (cli.getStatutClient().equals("Valide")) {
                                     statut = "fa-check";
@@ -47,11 +49,10 @@
                                     statut = "fa-clock-o";
                                     statut += " text-muted";
                                     tooltip = "Ancien";
-                                }
-                                else {
-                                statut = "fa-search";
-                                tooltip = "A valider";
-                                statut += " text-info";
+                                } else {
+                                    statut = "fa-search";
+                                    tooltip = "A valider";
+                                    statut += " text-info";
                                 }
                             } else {
                                 statut = "fa-times";
@@ -59,7 +60,7 @@
                                 statut += " text-danger";
                             }
 
-                            out.println("<tr><td>" + "<i class='fa " + statut + "' title='" + tooltip + "'></i>" + "</td>" 
+                            out.println("<tr><td>" + "<i class='fa " + statut + "' title='" + tooltip + "'></i>" + "</td>"
                                     + "<td>" + cli.getNomCli() + "</td>"
                                     + "<td>" + cli.getPrenomClient() + "</td>"
                                     + "<td>" + cli.getIdProfilSportif() + "</td></tr>");
