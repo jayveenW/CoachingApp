@@ -27,7 +27,13 @@ public class Composer  implements java.io.Serializable {
     public Composer() {
     }
 
-	
+    public Composer(ComposerId coId, int nbSerie, int nbRepetition)
+    {
+        this.id = coId;
+        this.nbSerieExercice = nbSerie;
+        this.nbRepetitionExercice = nbRepetition;
+    }
+    
     public Composer(ComposerId id, Exercice exercice, Occseance occseance, Seance seance) {
         this.id = id;
         this.exercice = exercice;
