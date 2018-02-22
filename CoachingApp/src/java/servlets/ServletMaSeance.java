@@ -41,13 +41,22 @@ public class ServletMaSeance extends HttpServlet {
             List<Exercice> lexos = new ArrayList<>();
             lexos = sac.getExercices(nom);
             for (Exercice ex : lexos) {
-                out.println("<exercice>" + ex.getCategorieexercice().getLibelleCategorieExercice() + "</exercice>");
-                out.println("<exerciceLib>" + ex.getLibelleExercice() + "</exerciceLib>");
-                out.println("<exerciceDesc>" + ex.getDescriptifExercice() + "</exerciceDesc>");
-                out.println("<exerciceNiv>" + ex.getNiveauExercice() + "</exerciceNiv>");
-                out.println("<exerciceReco>" + ex.getRecommandationExercice() + "</exerciceReco>");
-                out.println("<exercicePhot>" + ex.getPhotoExercice() + "</exercicePhot>");
-                out.println("<exerciceVid>" + ex.getVideoExercice() + "</exerciceVid>");
+                out.println("<unExercice>");
+                out.println("<exerciceCat>" + ex.getCategorieexercice().getLibelleCategorieExercice());
+                out.println("<exerciceLib>" + ex.getLibelleExercice());
+                out.println("<exerciceDesc>" + ex.getDescriptifExercice());
+                out.println("<exerciceNiv>" + ex.getNiveauExercice());
+                out.println("<exerciceReco>" + ex.getRecommandationExercice());
+                out.println("<exercicePhot>" + ex.getPhotoExercice());
+                out.println("<exerciceVid>" + ex.getVideoExercice());
+                out.println("</exerciceVid>");
+                out.println("</exercicePhot>");
+                out.println("</exerciceReco>");
+                out.println("</exerciceNiv>");
+                out.println("</exerciceDesc>");
+                out.println("</exerciceLib>");
+                out.println("</exerciceCat>");
+                out.println("</unExercice>");
             }
             out.println("</liste_exercice>");
         }
