@@ -5,45 +5,68 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Connexion</title>
-    </head>
-    <body>
-        <%
-            String p = (String) request.getAttribute("pseudo");
-            String m = (String) request.getAttribute("pass");
-        %>
+<%@include file="../includes/header.jsp"%>
+<div class="container">    
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+            </div> 
+            <div style="padding-top:30px" class="panel-body" >
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                <%
+                    String p = (String) request.getAttribute("pseudo");
+                %>
 
-        <form method="post" action="ServletLogin">
-            <div style="padding: 100px 0 0 250px;">
-                <div id="login-box">
-                    <h2>Connexion</h2>
-                    Entrez vos identifiants
-                    <br>
-                    <br>
-                    <div id="login-box-name" style="margin-top:20px;">Identifiant (Adresse mail) :</div>
-                    <div id="login-box-field" style="margin-top:20px;">
-                        <input name="userId" class="form-login" value="<%= (p == null) ? "" : p%>" size="30" placeholder="exemple@gmail.com" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z]{2,10}" />
+                <form method="post" id="loginform" class="form-horizontal" action="ServletLogin">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="userId" value="<%= (p == null) ? "" : p%>" placeholder="email">                                        
                     </div>
-                    <div id="login-box-name">Password :</div>
-                    <div id="login-box-field">
-                        <input name="password" type="password" class="form-login" value="<%= (m == null) ? "" : m%>" size="30" maxlength="48" />
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="mot de passe">
                     </div>
-                    <br />
-                    <br />
-                    <input style="margin-left:100px;" type="submit" value="Login" />
-                    <span class="login-box-options">
-                        Nouvel utilisateur ? <a href="Inscription" style="margin-left:30px;">Inscrivez vous</a>
-                    </span>
-                    <span class="error">${erreurs['idFaux']}</span>
-                    <span class="error">${erreurs['Vide']}</span>
-                    <span class="error">${erreurs['Pasrole']}</span>
-                    <span class="success">${erreurs['Valide']}</span>
-                </div>
+
+                    <p class="${erreurs['Vide'] == null ? '' : "alert alert-danger"}">${erreurs['Vide']}</p>
+                    <p class="${erreurs['idFaux'] == null ? '' : "alert alert-danger"}">${erreurs['idFaux']}</p>
+                    <p class="${erreurs['valide'] == null ? '' : "alert alert-success"}">${erreurs['valide']}</p>
+
+                    <div class="input-group">
+
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                            <button id="btn-login" type="submit" class="btn btn-success">Se connecter</button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                Je n'ai pas de compte! 
+                                <a href="Inscription">
+                                    S'inscrire ici
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </form>
             </div>
-        </form>
-    </body>
-</html>
+        </div>
+    </div>
+
+</div>
+
+<%@include file="../includes/footer.jsp"%>

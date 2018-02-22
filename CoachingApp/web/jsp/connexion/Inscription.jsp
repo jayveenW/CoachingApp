@@ -5,64 +5,73 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inscription</title>
-    </head>
-    <form method="post" action="ServletInscription">
-        <div style="padding: 100px 0 0 250px;">
-            <div id="login-box">
-                <h2>Inscription</h2>
-                Entrez vos informations personnelles
-                <br>
-                <br>
+<%@include file="../includes/header.jsp"%>
+<div class="container">  
+    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Inscription</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="Connexion">Se connecter</a></div>
+            </div>  
+            <div class="panel-body" >
+                <form id="signupform" class="form-horizontal" method="post" action="ServletInscription">
+                    <div class="${erreurs['incorrect'] == null ? '' : "alert alert-danger"}">${erreurs['incorrect']}</p>
+                        <div class="${erreurs['invalide'] == null ? '' : "alert alert-danger"}">${erreurs['invalide']}</p>
 
-                <div id="login-box-name" style="margin-top:20px;">Nom :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input name="nomCli" class="form-login" value="" size="30" maxlength="50" />
-                </div>
+                            <div class="form-group">
+                                <label for="Nom" class="col-md-3 control-label">Nom</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="nomCli" placeholder="Nom" required>
+                                </div>
+                            </div>
 
-                <div id="login-box-name" style="margin-top:20px;">Prénom :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input name="prenomCli" class="form-login" value="" size="30" maxlength="50" />
-                </div>
+                            <div class="form-group">
+                                <label for="Prenom" class="col-md-3 control-label">Prenom</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="prenomCli" placeholder="Prenom" required>
+                                </div>
+                            </div>
 
-                <div id="login-box-name" style="margin-top:20px;">Date de naissance :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input type="date" name="dateCli" class="form-login" value="" size="30" maxlength="50" />
-                </div>
+                            <div class="form-group">
+                                <label for="Age" class="col-md-3 control-label">Date de naissance</label>
+                                <div class="col-md-9">
+                                    <input type="date" class="form-control" name="dateCli" maxlength="10" required>
+                                </div>
+                            </div> 
 
-                <div id="login-box-name" style="margin-top:20px;">Téléphone :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input type="tel" name="telCli" class="form-login" value="" placeholder="00-00-00-00-00" size="30" maxlength="50" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" />
+                            <div class="form-group">
+                                <label for="Telephone" class="col-md-3 control-label">Telephone</label>
+                                <div class="col-md-9">
+                                    <input type="texte" class="form-control" name="telCli" maxlength="10" placeholder="Telephone" required>
+                                </div>
+                            </div>   
 
-                </div>
+                            <div class="form-group">
+                                <label for="Mail" class="col-md-3 control-label">Mail</label>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control" name="mailCli" placeholder="Mail" required>
+                                </div>
+                            </div>                        
 
-                <div id="login-box-name" style="margin-top:20px;">Mail :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input type="email" name="mailCli" class="form-login" value="" placeholder="exemple@gmail.com" size="30" maxlength="50" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z]{2,10}" />
-                </div>
+                            <div class="form-group">
+                                <label for="Mdp" class="col-md-3 control-label">Mot de passe</label>
+                                <div class="col-md-9">
+                                    <input type="password" class="form-control" name="mdpCli" maxlength="10" required>
+                                </div>
+                            </div>  
 
-                <div id="login-box-name" style="margin-top:20px;">Mot de passe :</div>
-                <div id="login-box-field" style="margin-top:20px;">
-                    <input type="password" name="mdpCli" class="form-login" value="" size="30" maxlength="50" />
-                </div>
-
-                <br />
-                <br />
-                <input style="margin-left:100px;" type="submit" value="S'inscrire" />
-
-                <br />
-
-                <span class="login-box-options">
-                    <a href="Connexion" style="margin-left:30px;">Annuler l'inscription</a>
-                </span>
-                <span class="error">${erreurs['incorrect']}</span>
-                <span class="error">${erreurs['invalide']}</span>
-            </div>
+                            <div class="form-group">
+                                <!-- Button -->                                        
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>S'inscrire</button> 
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+            </div> 
         </div>
-    </form>
-</body>
-</html>
+    </div>
+</div>
+
+<%@include file="../includes/footer.jsp"%>

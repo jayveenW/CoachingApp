@@ -28,6 +28,7 @@ public class ServletInscription extends HttpServlet {
 
     public static final String CHAMP_INCO = "incorrect";
     public static final String CHAMP_INV = "invalide";
+    public static final String CHAMP_VALIDE = "valide";
     public static final String CHAMP_ERR = "erreurs";
 
     /**
@@ -68,7 +69,7 @@ public class ServletInscription extends HttpServlet {
             boolean result = inscript.insertClient(nom, prenom, date, mail, mdp, tel);
             if (result == true) {
                 url = "Connexion";
-                erreurs.put("Valide", "L'inscription a bien été validé");
+                erreurs.put(CHAMP_VALIDE, "L'inscription a bien été validé.");
                 request.setAttribute(CHAMP_ERR, erreurs);
             } else {
                 url = "Inscription";

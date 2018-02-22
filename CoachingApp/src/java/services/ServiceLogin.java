@@ -7,6 +7,8 @@ package services;
 
 import java.util.ArrayList;
 import java.util.List;
+import metier.Client;
+import metier.Coach;
 import metier.HibernateUtil;
 import metier.Role;
 import metier.Utilisateur;
@@ -132,6 +134,52 @@ public class ServiceLogin {
             System.out.println("Erreur sur la transaction, pb SQL de récupération du role de l'utilisateur");
         }
         return idUser;
+    }
+
+    public Client getObjClient(String mail) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+
+        Client cli = null;
+
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.createQuery("from Client where mailClient ='" + mail + "'");
+            cli = (Client) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL de récupération du role de l'utilisateur");
+        }
+        return cli;
+    }
+
+    public Coach getObjCoach(String mail) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+
+        Coach coa = null;
+
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.createQuery("from Coach where mailCoach ='" + mail + "'");
+            coa = (Coach) query.uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL de récupération du role de l'utilisateur");
+        }
+        return coa;
     }
 
     public static void main(String[] args) {
