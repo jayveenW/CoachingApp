@@ -44,6 +44,18 @@
         <servlet-name>AfficherExercice</servlet-name>
         <jsp-file>/jsp/coach/AfficherExercice.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>ModificationExercice</servlet-name>
+        <jsp-file>/jsp/coach/ModificationExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletModifExercice</servlet-name>
+        <servlet-class>servlets.ServletModifExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletSupprExercice</servlet-name>
+        <servlet-class>servlets.ServletSupprExercice</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>AfficherExercice</servlet-name>
         <url-pattern>/AfficherExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificationExercice</servlet-name>
+        <url-pattern>/ModificationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifExercice</servlet-name>
+        <url-pattern>/ServletModifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSupprExercice</servlet-name>
+        <url-pattern>/ServletSupprExercice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
