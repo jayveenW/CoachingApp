@@ -8,6 +8,7 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 import metier.Client;
+import metier.Exercice;
 import metier.HibernateUtil;
 import metier.Occurenceprogramme;
 import metier.Programme;
@@ -74,6 +75,34 @@ public class ServiceAccueilClient {
         }
 
         return prog;
+    }
+
+    public List<Exercice> getExercices(String libseance) {
+
+        Session session = HibernateUtil.openSession();
+        Transaction tx = null;
+        
+        List<Exercice> listExo = new ArrayList<>();
+
+        try {
+            tx = session.getTransaction();
+            tx.begin();
+
+            Query query = session.createQuery("from Seance as S where S.idSeance in "
+                    + "(select C.idSeance from ConstituerId as C where C.idSequence in "
+                    + "(select Seq.idSequence from Sequence as Seq where seq.idOccProgramme in "
+                    + "(select Si.idOccProgramme from SuivreId as Si where idClient = " + libseance + ")))");
+            listExo = query.list();
+
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur sur la transaction, pb SQL pour retrouver les seances du client");
+        } finally {
+            session.close();
+        }
+
+        return listExo;
     }
 
 }

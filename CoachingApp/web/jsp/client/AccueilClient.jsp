@@ -21,12 +21,12 @@
 
     Client client = (Client) session.getAttribute("client");
     String prenomCli = client.getPrenomClient();
-    
+
     /* Récupération des séances pour mon programme */
     ServiceAccueilClient sac = new ServiceAccueilClient();
     List<Seance> seances = new ArrayList<>();
     seances = sac.getSeances(client);
-    
+
     /* Récupération du nom de mon programme */
     Programme prog = sac.getProgramme(client);
     String libProg = prog.getLibelleProgramme();
@@ -34,7 +34,7 @@
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <h1 class="page-header">Bonjour <%= prenomCli %></h1>
+        <h1 class="page-header">Bonjour <%= prenomCli%></h1>
     </div>
 </div>
 
@@ -42,18 +42,26 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
         <div class="form-group">
 
-            <H2>Votre programme <%= libProg %></H2>
+            <H2>Votre programme <%= libProg%></H2>
 
             <b>Choisir une séance</b>
             <br/>
+
             <select id="lseance" onChange="l_seances()">
-                <option>--</option>
+            <%
+                try {
+                    for (Seance s : seances) {
+                        out.println("<option>" + s.getLibelleSeance() + "</option>");
+                    }
+                } catch (Exception e) {
+                    out.println("<p>" + e.getMessage() + "<p>");
+                }
+            %> 
             </select>
+            
             <input type="button" value="Afficher la séance" onclick="l_maSeance()" />
 
-
-
-            <div id="lcitations">
+            <div id="maseance">
 
             </div>
 

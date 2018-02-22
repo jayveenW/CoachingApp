@@ -68,11 +68,11 @@ public class ServletLogin extends HttpServlet {
                     } else if ("Client".equals(r.getLibelleRole())) {
                         Client client = loginService.getObjClient(userId);
                         request.getSession().setAttribute("client", client);
-                        url = "FormCreaExo";
+                        url = "AccueilClient";
                     } else if ("Coach".equals(r.getLibelleRole())) {
                         Coach coach = loginService.getObjCoach(userId);
                         request.getSession().setAttribute("coach", coach);
-                        url = "COACHACCUEILJSP";
+                        url = "AccueilCoach";
                     }
                 }
             } else {
