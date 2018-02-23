@@ -11,6 +11,11 @@ package utilitaire;
  */
 public class Utilitaire {
 
+    /**
+     * Méthode qui permet de convertir un String en camel case
+     * @param entry mot que l'on souhaite convertir
+     * @return 
+     */
     public String convertCamelCase(String entry) {
         String result = "";
         char firstChar = entry.charAt(0);

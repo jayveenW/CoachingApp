@@ -16,8 +16,7 @@
             <div class="form-group">
                 <label>Profil de séance</label>
                 <select class="form-control" name="profil">
-                    <option value="Amincissement">Amincissement</option>
-                    <option value="Amaigrissement">Amaigrissement</option>
+                    <option value="Sans profil">Sans profil</option>
                     <option value="Renforcement musculaire">Renforcement musculaire</option>
                     <option value="Cardio">Cardio</option>
                 </select>

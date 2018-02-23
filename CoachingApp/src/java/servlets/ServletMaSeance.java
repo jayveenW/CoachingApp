@@ -7,7 +7,6 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.Exercice;
+import metier.Occseance;
 import services.ServiceAccueilClient;
 
 /**
@@ -34,20 +34,26 @@ public class ServletMaSeance extends HttpServlet {
             out.println("<liste_exercice>");
 
             /*----- Récupération des paramètres -----*/
-            String nom = request.getParameter("nomseance");
-
+            String seanceDate = request.getParameter("date");
+            String idcli = request.getParameter("idcli");
+            
+            
             /*----- Lecture de liste des seances -----*/
             ServiceAccueilClient sac = new ServiceAccueilClient();
             List<Exercice> lexos = new ArrayList<>();
-            lexos = sac.getExercices(nom);
+            Occseance occ = sac.getSeance(idcli, seanceDate);
+            int idOcc = occ.getIdOccSeance();
+            lexos = sac.getExercices(idOcc);
             for (Exercice ex : lexos) {
-                out.println("<exercice>" + ex.getCategorieexercice().getLibelleCategorieExercice() + "</exercice>");
+                out.println("<unExercice>");
+                out.println("<exerciceCat>" + ex.getCategorieexercice().getLibelleCategorieExercice() + "</exerciceCat>");
                 out.println("<exerciceLib>" + ex.getLibelleExercice() + "</exerciceLib>");
                 out.println("<exerciceDesc>" + ex.getDescriptifExercice() + "</exerciceDesc>");
                 out.println("<exerciceNiv>" + ex.getNiveauExercice() + "</exerciceNiv>");
                 out.println("<exerciceReco>" + ex.getRecommandationExercice() + "</exerciceReco>");
                 out.println("<exercicePhot>" + ex.getPhotoExercice() + "</exercicePhot>");
                 out.println("<exerciceVid>" + ex.getVideoExercice() + "</exerciceVid>");
+                out.println("</unExercice>");
             }
             out.println("</liste_exercice>");
         }

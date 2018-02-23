@@ -6,20 +6,20 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import metier.ComposerId;
+import metier.Occseance;
 import services.ServiceSeance;
 
 /**
  *
  * @author Many
  */
-public class ServletCreerSeance extends HttpServlet {
+public class ServletCompleterSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,31 +32,31 @@ public class ServletCreerSeance extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        RequestDispatcher rd;
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(true);
-        
-        String libelleSeance = ("".equals(request.getParameter("nomSeance")))? "" : request.getParameter("nomSeance");
-        String profil = ("".equals(request.getParameter("profil")))? "" : request.getParameter("profil");
-                
         ServiceSeance seSe = new ServiceSeance();
-        //Récupération de l'identifiant de la séance fraichement remplie
-        int idSeance = seSe.enrSeance(libelleSeance, profil);
-        
-        //Mise en session de l'identifiant de la séance
-        if(idSeance != 0)
+        int idSeance = (int)session.getAttribute("idSeance");
+        Occseance os = new Occseance();
+        int idOccSeance = seSe.recupIdOccSeance(os);
+        for(int i = 0; i<5;i++)
         {
-            session.setAttribute("idSeance", idSeance);
-        }
-        else
-        {
-            String msg = "Pas de numéro retourné ! ";
-            session.setAttribute("idSeance", msg);
+            String param = "exercice" + i;
+            if(!request.getParameter(param).isEmpty())
+            {
+                String idExercice = request.getParameter(param);
+                int idExo = Integer.parseInt(idExercice);
+                ComposerId ciD = new ComposerId(idExo, idOccSeance, idSeance, i);
+                String paramS = "nbSerie"+i;
+                String serie = request.getParameter(paramS);
+                int nbSerie = Integer.parseInt(serie);
+                String paramR = "nbRepetition"+i;
+                String repetition = request.getParameter(paramR);
+                int nbRepetition = Integer.parseInt(repetition);
+                seSe.enrComposer(ciD, nbSerie, nbRepetition);
+            }    
+            
         }
         
-        //Redirection vers l'étape 2.
-        rd = request.getRequestDispatcher("CompleterSeance");
-        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -18,6 +18,10 @@ import org.hibernate.Transaction;
 
 public class ServiceProgramme {
 
+    /** 
+     * Récupère une liste d'objet programme
+     * @return 
+     */
     public List<Programme> recupProgrammes() {
         List<Programme> programme = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -40,6 +44,11 @@ public class ServiceProgramme {
         return programme;
     }
 
+    /**
+     * Permet d'insérer un programme
+     * @param programme objet programme
+     * @return 
+     */
     public boolean insertProgramme(Programme programme) {
 
         boolean insert = false;
@@ -73,6 +82,12 @@ public class ServiceProgramme {
         return insert;
     }
 
+    /** 
+     * permet d'insérer une séquence
+     * @param programme objet programme
+     * @param sequence objet séquence
+     * @return 
+     */
     public boolean insertSequence(Programme programme, Sequence sequence) {
 
         boolean insert = false;
@@ -106,6 +121,13 @@ public class ServiceProgramme {
         return insert;
     }
 
+    /**
+     * Permet d'insérer une séance pour un programme, une sequence, une seance
+     * @param programme
+     * @param sequence
+     * @param seance
+     * @return 
+     */
     public boolean insertSeance(Programme programme, Sequence sequence, Seance seance) {
 
         boolean insert = false;

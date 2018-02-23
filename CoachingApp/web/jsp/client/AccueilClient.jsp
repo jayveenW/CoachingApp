@@ -4,6 +4,8 @@
     Author     : NG71392
 --%>
 
+<%@page import="metier.Occseance"%>
+<%@page import="metier.Composer"%>
 <%@page import="metier.Programme"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="metier.Seance"%>
@@ -15,16 +17,13 @@
 <%@include file="../includes/headerClient.jsp"%>
 
 <%
-    /* Récupération de l'objet depuis la session */
-    Role role = (Role) session.getAttribute("role");
-    String libRole = role.getLibelleRole();
-
     Client client = (Client) session.getAttribute("client");
     String prenomCli = client.getPrenomClient();
+    int idcli = client.getIdClient();
 
     /* Récupération des séances pour mon programme */
     ServiceAccueilClient sac = new ServiceAccueilClient();
-    List<Seance> seances = new ArrayList<>();
+    List<Occseance> seances = new ArrayList();
     seances = sac.getSeances(client);
 
     /* Récupération du nom de mon programme */
@@ -41,34 +40,37 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
         <div class="form-group">
-
+            <input type="hidden" value="<%= idcli %>" id="idcli"/>
+            <% if (libProg == null) {
+            %>
+            <H2>Vous n'avez pas de programme</H2>
+                <%
+                } else {
+                %>
             <H2>Votre programme <%= libProg%></H2>
 
             <b>Choisir une séance</b>
             <br/>
-
-            <select id="lseance" onChange="l_seances()">
-            <%
-                try {
-                    for (Seance s : seances) {
-                        out.println("<option>" + s.getLibelleSeance() + "</option>");
+            Séance du : 
+            <select class="form-control col" style="max-width: 135px;" id="lseance">
+                <%
+                    try {
+                        for (Occseance s : seances) {
+                            out.println("<option>" + s.getDateDebut() + "</option>");
+                        }
+                    } catch (Exception e) {
+                        out.println("<p>" + e.getMessage() + "<p>");
                     }
-                } catch (Exception e) {
-                    out.println("<p>" + e.getMessage() + "<p>");
-                }
-            %> 
+                %>             
             </select>
-            
-            <input type="button" value="Afficher la séance" onclick="l_maSeance()" />
 
-            <div id="maseance">
+            <input type="button" class="btn btn-primary" value="Afficher la séance"  onClick="l_maSeance()" />
 
-            </div>
-
-
-
+            <div id="maseance" class="container pt-5"></div>
+            <%
+                }
+            %>
         </div>
     </div>
 </div>
-
 <%@include file="../includes/footer.jsp"%>

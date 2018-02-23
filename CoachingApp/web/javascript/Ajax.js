@@ -9,22 +9,25 @@
  */
 
 /*function test(){
-    alert(document.getElementById("catExo").value);
-}*/
+ alert(document.getElementById("catExo").value);
+ }*/
 /*(function() {
-   document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
-        console.log("test");
-    }); 
-})*/
+ document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
+ console.log("test");
+ }); 
+ })*/
 
-function modalParam(button){
+function modalParam(button) {
     var id = button.getAttribute("id");
     var elt = document.getElementById("parametre");
-    var url = "ServletSupprExercice?idExo="+id;
+    var url = "ServletSupprExercice?idExo=" + id;
     elt.href = url;
-    
+
 }
 
+/**
+ * Méthode qui retourne l'objet XMLHttpRequest en fonction du navigateur.
+ */
 function getXMLHttpRequest()
 {
     var xhr = null;
@@ -95,15 +98,15 @@ function rechercherProgramme() {
 }
 
 /**
- * Cette méthode affiche les séances et les exos.
+ * Cette méthode affiche les exos d'une séance.
  *
  * On utilise la propriété 'responseXML' de l'objet XMLHttpRequest afin
  * de récupérer sous forme d'arbre DOM le document XML envoyé par le serveur.
  */
 function l_maSeance()
 {
-    var nomseance = document.getElementById("lseance").value;
-
+    var date = document.getElementById("lseance").value;
+    var idcli = document.getElementById("idcli").value;
     var xhr = getXMLHttpRequest();
 
     xhr.onreadystatechange = function ()
@@ -111,27 +114,32 @@ function l_maSeance()
         // Si l'on a tout reçu et que la requête http s'est bien passée.
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            var i;
             var xmlDoc = xhr.responseXML;
-            var tableau = xmlDoc.getElementsByTagName("exercice");
-            var lignes = "";
-
+            var tableau = xmlDoc.getElementsByTagName("unExercice");
+            var lignes = "<div class=\"card mb-5\"><div class=\"card-block p-0\"><table class=\"table table-bordered table-sm m-0\"><thead class=\"\"><tr><th>#</th><th>Name</th><th>Registration Date</th><th>E-mail address</th><th>Premium Plan</th><th>Premium Plan</th><th>Premium Plan</th><th>Premium Plan</th></tr></thead><tbody>";
+                    
             // Elément html que l'on va mettre à jour.
             var elt = document.getElementById("maseance");
 
             for (i = 0; i < tableau.length; i++) {
-                lignes += "<div>" + tableau[i].childNodes[0].nodeValue + "</div>";
+                lignes += "<tr><td><label class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\"><span class=\"custom-control-indicator\"></span></label></td>"
+                        + "<td>" + tableau[i].childNodes[1].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[3].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[5].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[7].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[9].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[11].nodeValue + "</td>"
+                        + "<td>" + tableau[i].childNodes[13].nodeValue + "</td>"
+                        + "<td><span class=\"label label-success\">Active</span></td></tr>";
             }
-
-            elt.innerHTML = lignes;
+            elt.innerHTML = lignes + "</tbody></table></div></div></div>";
         }
     };
 
     // Requête au serveur avec les paramètres éventuels.
     xhr.open("POST", "ServletMaSeance", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send("nomseance=" + nomseance);
-    console.log(nomseance);
+    xhr.send("date=" + date + "&idcli=" + idcli);
 }
 
 

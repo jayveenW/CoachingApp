@@ -88,6 +88,11 @@ public class ServiceLogin {
         return list;
     }
 
+    /**
+     * Récupère le role d'un utilisateur
+     * @param user
+     * @return 
+     */
     public Role getRoleUtilisateur(Utilisateur user) {
 
         Session session = HibernateUtil.openSession();
@@ -112,6 +117,11 @@ public class ServiceLogin {
         return role;
     }
 
+    /** 
+     * permet de récupérer l'id d'un utilisateur en fonction d'une adresse mail
+     * @param mail
+     * @return 
+     */
     public int getIdUser(String mail) {
 
         Session session = HibernateUtil.openSession();
@@ -136,6 +146,11 @@ public class ServiceLogin {
         return idUser;
     }
 
+    /** 
+     * Permet de récupérer un client en fonction d'un mail
+     * @param mail
+     * @return 
+     */
     public Client getObjClient(String mail) {
 
         Session session = HibernateUtil.openSession();
@@ -159,6 +174,11 @@ public class ServiceLogin {
         return cli;
     }
 
+    /**
+     * récupère un coach en fonction d'une adresse mail
+     * @param mail
+     * @return 
+     */
     public Coach getObjCoach(String mail) {
 
         Session session = HibernateUtil.openSession();
