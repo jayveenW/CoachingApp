@@ -5,16 +5,11 @@
 --%>
 
 <%@page import="metier.Coach"%>
-<%@page import="metier.Role"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../includes/headerCoach.jsp"%>
 
 <%
-    /* Récupération de l'objet depuis la session */
-    Role role = (Role) session.getAttribute("role");
-    String libRole = role.getLibelleRole();
-    
-    Coach coach = (Coach) session.getAttribute("client");
+    Coach coach = (Coach) session.getAttribute("coach");
     String prenomCoach = coach.getPrenomCoach();
 %>
 
@@ -28,7 +23,7 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
         <div class="form-group">
 
-            <H2>Bienvenue sur votre espace <%= libRole %></H2>
+            <H2>Bienvenue sur votre espace Coach</H2>
             <p></p>
 
         </div>

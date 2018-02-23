@@ -28,21 +28,15 @@ public class ServletDeconnexion extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = null;
-
-        // Chainage direct vers les JSP
-        RequestDispatcher rd;
 
         /* Récupération et destruction de la session en cours */
         HttpSession session = request.getSession();
         session.invalidate();
 
         /* Redirection vers la connexion */
-        url = "Connexion";
+        response.sendRedirect("index.html");
                 
-        rd = request.getRequestDispatcher(url);
-
-        rd.forward(request, response);
+        
     }
 
     @Override
