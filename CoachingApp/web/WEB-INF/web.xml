@@ -60,6 +60,10 @@
         <servlet-name>Inscription</servlet-name>
         <jsp-file>/jsp/connexion/Inscription.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>ServletMaSeance</servlet-name>
+        <servlet-class>servlets.ServletMaSeance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/Inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMaSeance</servlet-name>
+        <url-pattern>/ServletMaSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
