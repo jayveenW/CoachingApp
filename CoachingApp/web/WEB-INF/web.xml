@@ -72,6 +72,14 @@
         <servlet-name>ServletMaSeance</servlet-name>
         <servlet-class>servlets.ServletMaSeance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <servlet-class>servlets.ServletDeconnexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInscription</servlet-name>
+        <servlet-class>servlets.ServletInscription</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -167,6 +175,14 @@
     <servlet-mapping>
         <servlet-name>ServletSupprExercice</servlet-name>
         <url-pattern>/ServletSupprExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <url-pattern>/ServletDeconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInscription</servlet-name>
+        <url-pattern>/ServletInscription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
