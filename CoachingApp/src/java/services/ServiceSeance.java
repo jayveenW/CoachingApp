@@ -20,6 +20,8 @@ import org.hibernate.Transaction;
  * @author Many
  */
 public class ServiceSeance {
+    
+    //Cette fonction sert à enregistrer une coquille vide de séance
     public int enrSeance(String ls, String ps) {
         int idSeance = 0;
         Session session = HibernateUtil.openSession();
@@ -43,6 +45,8 @@ public class ServiceSeance {
 
     }
     
+    //Cette fonction permet de récupérer un identifiant d'une occurrence
+    //fraichement entrée en base de données. 
     public int recupIdOccSeance(Occseance os)
     {
         int idOccSeance = 0;
@@ -64,8 +68,9 @@ public class ServiceSeance {
         return idOccSeance;
     }
     
-    
-    public boolean enrComposer(ComposerId coIdList, int nbSerie, int nbRepetition)
+    //Cette fonction permet de lier les exercices et les séances en prenant
+    //compte le nombre de répétition et de série. 
+    public boolean enrComposer(ComposerId coId, int nbSerie, int nbRepetition)
     {
         boolean insert = false;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -74,7 +79,7 @@ public class ServiceSeance {
             tx = session.getTransaction();
             tx.begin();
             
-                Composer com = new Composer(coIdList, nbSerie, nbRepetition);
+                Composer com = new Composer(coId, nbSerie, nbRepetition);
                 session.save(com);
             
             
@@ -88,23 +93,5 @@ public class ServiceSeance {
             e.printStackTrace();
         }
         return insert;
-    }
-    
-    public static void main(String[] args)
-    {
-        ArrayList<ComposerId> coList = new ArrayList<ComposerId>();
-        ServiceSeance ss = new ServiceSeance();
-        int id = ss.enrSeance("Tonique", "Cardio");
-        System.out.println(id);
-        
-        ComposerId ci1 = new ComposerId(1, 1, 1, 1);
-        System.out.println("oups");
-        ComposerId ci2 = new ComposerId(2, 1, 1, 2);
-        System.out.println("oups2");
-        coList.add(ci1);
-        coList.add(ci2);
-        
-        //ss.enrComposer(coList, 2, 10);
-        System.out.println("ça passe ici");
     }
 }
