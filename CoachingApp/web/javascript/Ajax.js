@@ -9,20 +9,20 @@
  */
 
 /*function test(){
-    alert(document.getElementById("catExo").value);
-}*/
+ alert(document.getElementById("catExo").value);
+ }*/
 /*(function() {
-   document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
-        console.log("test");
-    }); 
-})*/
+ document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
+ console.log("test");
+ }); 
+ })*/
 
-function modalParam(button){
+function modalParam(button) {
     var id = button.getAttribute("id");
     var elt = document.getElementById("parametre");
-    var url = "ServletSupprExercice?idExo="+id;
+    var url = "ServletSupprExercice?idExo=" + id;
     elt.href = url;
-    
+
 }
 
 function getXMLHttpRequest()
@@ -113,14 +113,20 @@ function l_maSeance()
         {
             var i;
             var xmlDoc = xhr.responseXML;
-            var tableau = xmlDoc.getElementsByTagName("exercice");
+            var tableau = xmlDoc.getElementsByTagName("unExercice");
             var lignes = "";
 
             // Elément html que l'on va mettre à jour.
             var elt = document.getElementById("maseance");
 
             for (i = 0; i < tableau.length; i++) {
-                lignes += "<div>" + tableau[i].childNodes[0].nodeValue + "</div>";
+                lignes += "<div>" + tableau[i].childNodes[0].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[1].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[2].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[3].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[4].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[5].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[6].nodeValue + "</div>";
             }
 
             elt.innerHTML = lignes;
