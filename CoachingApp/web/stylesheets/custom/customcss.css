@@ -28,6 +28,10 @@
     font-weight:600;
 }
 
+#wrapper, #page-wrapper{
+    min-height:100%;
+}
+
 .navbar-default{
     background-color: rgb(36,36,36);
 }
@@ -55,9 +59,8 @@ a{
 }
 
 body {
-    /*background-image: url("../../ressources/images/workout-bg.jpeg");
-    */
     background-color: rgb(36,36,36);
+    height:100%;
 }
 
 .page-header:after {
@@ -95,7 +98,7 @@ body {
     background-size: cover;
 }
 
-body, html{
+html{
     height:100%;
 }
 

@@ -8,7 +8,7 @@
 <%@page import="services.ServiceSeance"%>
 <%@page import="metier.Seance"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="../includes/headerAdmin.jsp"%>
+<%@include file="../includes/headerCoach.jsp"%>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <h1 class="page-header">Création d'une séquence</h1>
@@ -35,30 +35,30 @@
                     <input type="text" class="form-control" name="OrdreSeq" id="Nom" required>
                 </div>
                 <div class="table-responsive">
-            <table class="table table-striped" id="tableauProgramme">       
-                <thead>
-                    <th></th>
-                    <th>Libelle</th>
-                    <th>Profil</th>
-                </thead>
-                 <p>Choisissez les séances à affecter</p>
-                <%
-                    try {
-                        for (Seance s : ServiceSeance.afficherSeance()) {
-                            out.println("<tr><td><input type='checkbox' name='IDSeance' value='" + s.getIdSeance() + "'></td><td>"+ s.getLibelleSeance()+"</td><td>" + s.getProfilSeance()  + "</td></tr>");
-                        }
-                    } catch (Exception e) {
-                        out.println("<p>" + e.getMessage() + "<p>");
-                    }
-                %>
-            </table>
-        </div> 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-warning pull-right">Valider</button>
-                    <button class="btn btn-default" thref="Acceuil">Retour</a>
-                </div>
-            </form>
+                    <table class="table table-striped" id="tableauProgramme">       
+                        <thead>
+                        <th></th>
+                        <th>Libelle</th>
+                        <th>Profil</th>
+                        </thead>
+                        <p>Choisissez les séances à affecter</p>
+                        <%
+                            try {
+                                for (Seance s : ServiceSeance.afficherSeance()) {
+                                    out.println("<tr><td><input type='checkbox' name='IDSeance' value='" + s.getIdSeance() + "'></td><td>" + s.getLibelleSeance() + "</td><td>" + s.getProfilSeance() + "</td></tr>");
+                                }
+                            } catch (Exception e) {
+                                out.println("<p>" + e.getMessage() + "<p>");
+                            }
+                        %>
+                    </table>
+                </div> 
 
+            </form>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning pull-right">Valider</button>
+                <a href="AfficherSequence"><button class="btn btn-default">Retour</button></a>
+            </div>
         </div>
     </div>
 </div>

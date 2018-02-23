@@ -16,9 +16,7 @@
                     </div> 
                     <div class="panel-body" >
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                        <%
-                            String p = (String) request.getAttribute("pseudo");
-                        %>
+                        <%String p = (String) request.getAttribute("pseudo");%>
 
                         <form method="post" id="loginform" class="form-horizontal" action="ServletLogin">
                             <div style="margin-bottom: 25px" class="input-group">
@@ -42,8 +40,6 @@
                                     <button id="btn-login" type="submit" class="btn btn-success">Se connecter</button>
                                 </div>
                             </div>
-
-
                             <div class="form-group">
                                 <div class="col-md-12 control">
                                     <div>

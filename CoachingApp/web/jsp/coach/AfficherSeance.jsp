@@ -20,7 +20,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="form-group">
-            <input class="btn btn-default right" type="submit" name="Ajouter" id="AjouterProgramme" value="Ajouter une Séance">
+            <a href="AjouterSeance" class="btn btn-default right" name="Ajouter">Ajouter une Séance</a>
         </div>
 
 

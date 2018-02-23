@@ -16,25 +16,20 @@
         <h3 class="page-header">Liste des programmes</h3>
     </div>
 </div>
-<div class="row">
+<!--<div class="row">
     <div class="col-lg-12">
         <div class="form-group">
             <label for="RechercheListe">Vous pouvez rechercher le programme grâce à son nom :</label>
             <input class="form-control" type="text" name="RecherchePrgm" onKeyUp="rechercherProgramme()" id="RechercheListe"/>
         </div>
     </div>
-</div>
+</div>-->
 
 <div class="row">
     <div class="col-lg-12">
         <div class="form-group">
-           <form method="POST" action="AjoutProgramme">
-            <a></a> <input class="btn btn-default" type="submit" name="Ajouter" id="AjouterProgramme" value="Ajouter un programme" >
-             </form>
+            <a href="CreerProgramme"><button class="btn btn-default">Ajouter un programme</button></a>
         </div>
-
-
-
         <div class="table-responsive">
             <table class="table table-striped" id="tableauProgramme">       
                 <thead>

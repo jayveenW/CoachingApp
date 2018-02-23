@@ -62,7 +62,7 @@ public class ServletAffecterSeance extends HttpServlet {
             throw new Exception("Problème d'objet ou bdd " + ex.getMessage());
         }
             // redirection apres l'execution du service
-        RequestDispatcher rd = request.getRequestDispatcher("AfficherSeance");
+        RequestDispatcher rd = request.getRequestDispatcher("AfficherSequence");
         rd.forward(request, response);
     }
 

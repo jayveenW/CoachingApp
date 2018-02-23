@@ -6,6 +6,7 @@
 package servlets;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,10 +54,10 @@ public class ServletCompleterSeance extends HttpServlet {
                 String repetition = request.getParameter(paramR);
                 int nbRepetition = Integer.parseInt(repetition);
                 seSe.enrComposer(ciD, nbSerie, nbRepetition);
-            }    
-            
+            }
         }
-        
+        RequestDispatcher rd = request.getRequestDispatcher("AfficherSeance");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

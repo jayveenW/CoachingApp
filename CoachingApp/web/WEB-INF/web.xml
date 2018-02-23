@@ -72,6 +72,82 @@
         <servlet-name>ServletMaSeance</servlet-name>
         <servlet-class>servlets.ServletMaSeance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAjouterClient</servlet-name>
+        <servlet-class>servlets.ServletAjouterClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAjouterClientAdmin</servlet-name>
+        <servlet-class>servlets.ServletAjouterClientAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjouterClient</servlet-name>
+        <jsp-file>/jsp/admin/AjouterClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherClientAdmin</servlet-name>
+        <jsp-file>/jsp/admin/AfficherClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherClientCoach</servlet-name>
+        <jsp-file>/jsp/coach/AfficherClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherSeance</servlet-name>
+        <jsp-file>/jsp/coach/AfficherSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AjouterSeance</servlet-name>
+        <jsp-file>/jsp/coach/CreerSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <servlet-class>servlets.ServletCreerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CompleterSeance</servlet-name>
+        <jsp-file>/jsp/coach/CompleterSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCompleterSeance</servlet-name>
+        <servlet-class>servlets.ServletCompleterSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherProgramme</servlet-name>
+        <jsp-file>/jsp/coach/AfficherProgramme.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CreeSequence</servlet-name>
+        <jsp-file>/jsp/coach/CréationSequence.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAjoutSequence</servlet-name>
+        <servlet-class>servlets.ServletAjoutSequence</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AffecterSeance</servlet-name>
+        <jsp-file>/jsp/coach/AffecterSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAffecterSeance</servlet-name>
+        <servlet-class>servlets.ServletAffecterSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherSequence</servlet-name>
+        <jsp-file>/jsp/coach/AfficherSequence.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CreerProgramme</servlet-name>
+        <jsp-file>/jsp/coach/CreerProgramme.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <servlet-class>servlets.ServletDeconnexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInscription</servlet-name>
+        <servlet-class>servlets.ServletInscription</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -133,10 +209,6 @@
         <url-pattern>/HeaderCoach</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AfficherExercice</servlet-name>
-        <url-pattern>/AfficherExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AccueilAdmin</servlet-name>
         <url-pattern>/AccueilAdmin</url-pattern>
     </servlet-mapping>
@@ -167,6 +239,86 @@
     <servlet-mapping>
         <servlet-name>ServletSupprExercice</servlet-name>
         <url-pattern>/ServletSupprExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjouterClient</servlet-name>
+        <url-pattern>/ServletAjouterClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjouterClientAdmin</servlet-name>
+        <url-pattern>/Admin/ServletAjouterClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherExercice</servlet-name>
+        <url-pattern>/AfficherExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjouterClient</servlet-name>
+        <url-pattern>/AjouterClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherClientAdmin</servlet-name>
+        <url-pattern>/AfficherClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherClientCoach</servlet-name>
+        <url-pattern>/AfficherClientCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherSeance</servlet-name>
+        <url-pattern>/AfficherSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjouterSeance</servlet-name>
+        <url-pattern>/AjouterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <url-pattern>/ServletCreerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompleterSeance</servlet-name>
+        <url-pattern>/CompleterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCompleterSeance</servlet-name>
+        <url-pattern>/ServletCompleterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherProgramme</servlet-name>
+        <url-pattern>/AfficherProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreeSequence</servlet-name>
+        <url-pattern>/CreeSequence</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAjoutSequence</servlet-name>
+        <url-pattern>/AjoutSequence</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AffecterSeance</servlet-name>
+        <url-pattern>/AffecterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAffecterSeance</servlet-name>
+        <url-pattern>/AffectationSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherSequence</servlet-name>
+        <url-pattern>/AfficherSequence</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerProgramme</servlet-name>
+        <url-pattern>/CreerProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <url-pattern>/ServletDeconnexion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletInscription</servlet-name>
+        <url-pattern>/ServletInscription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

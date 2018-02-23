@@ -28,9 +28,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="form-group">
-           <form method="POST" action="ServletDetailSequence">
-            <a></a> <input class="btn btn-default" type="submit" name="Detail Séquence" id="AjouterProgramme" value="Ajouter une sequence" >
-             </form>
+            <a href="CreeSequence"><button class="btn btn-warning btn-circle"><i class="fa fa-plus"></i></button></a> : Ajouter une séquence 
         </div>
         <div class="table-responsive">
             <table class="table table-striped" id="tableauProgramme">       
@@ -45,7 +43,7 @@
                         
                     try { //Colonne vide servant a utiliser la checkbox en y mettant la valeur de l'id de la ligne cocher
                         for (Sequence seq : ServiceSequence.afficherSequence()) {//  out.println("<tr><td> " + s.getLibelleSeance() + "</td><td>" + s.getProfilSeance() + "</td>");
-                            out.println("<tr><td><input type='checkbox' name='IDSeance' value='" + seq.getIdSequence() + "'></td><td>"+ seq.getLibelleSequence() + "'></td><td>" + seq.getNbRepetitionSequence() +"</td><td>" + seq.getOrdreSequence()  + "</td></tr>");
+                            out.println("<tr><td><input type='checkbox' name='IDSeance' value='" + seq.getIdSequence() + "'></td><td>"+ seq.getLibelleSequence() + "</td><td>" + seq.getNbRepetitionSequence() +"</td><td>" + seq.getOrdreSequence()  + "</td></tr>");
                         }
                     } catch (Exception e) {
                         out.println("<p>" + e.getMessage() + "<p>");

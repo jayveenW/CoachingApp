@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="services.ServicesClient"%>
 <%@page import="metier.Client"%>
-<%@include file="../includes/headerCoach.jsp" %>
+<%@include file="../includes/headerAdmin.jsp" %>
 <!DOCTYPE html>
 
 
@@ -19,16 +19,23 @@
 </div>
 
 <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+        <a class="btn btn-default pull-right" href="AjouterClient">Ajouter un client</a>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col-lg-8 col-lg-offset-2">
         <div class="table-responsive">
             <table class="table table-striped" id="tableauProgramme">       
                 <thead>
-                    <th>Statut</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Id sportif</th>
+                <th>Statut</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Id sportif</th>
                 </thead>
-
+                
                 <%
                     try {
                         for (Client cli : ServicesClient.afficherClient()) {

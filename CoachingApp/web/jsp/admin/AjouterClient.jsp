@@ -18,11 +18,7 @@
         <div class="form-group">
 
             <p>Tous les champs sont obligatoires</p>
-<<<<<<< HEAD
-            <form method="Post" action="AjoutClient">
-=======
-            <form method="Post" action="ServletAjouterClient">
->>>>>>> origin/master
+            <form method="Post" action="Admin/ServletAjouterClient">
                 <div class="form-group">
                     <label for="Nom">Nom :</label> 
                     <input type="text" class="form-control" name="Nom" id="Nom" required>
