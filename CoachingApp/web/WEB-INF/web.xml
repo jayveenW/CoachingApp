@@ -87,6 +87,12 @@
     <servlet>
         <servlet-name>CreerSeance</servlet-name>
         <jsp-file>/jsp/coach/CreerSeance.jsp</jsp-file>
+        <servlet-name>ServletDeconnexion</servlet-name>
+        <servlet-class>servlets.ServletDeconnexion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletInscription</servlet-name>
+        <servlet-class>servlets.ServletInscription</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
