@@ -6,21 +6,20 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import metier.Categorieexercice;
-import services.ServiceExercice;
+import javax.servlet.http.HttpSession;
+import metier.ComposerId;
+import metier.Occseance;
+import services.ServiceSeance;
 
 /**
  *
- * @author Bastien
+ * @author Many
  */
-public class ServletCategorieExercice extends HttpServlet {
+public class ServletCompleterSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,23 +30,33 @@ public class ServletCategorieExercice extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServiceExercice servExo = new ServiceExercice(); // Instanciation du service
-        List<Categorieexercice> listeCat = servExo.getListeCategorie();
-        String resultat = "<?xml version=\"1.0\"?><liste_categories>";
-        response.setContentType("application/xml;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        try (PrintWriter out = response.getWriter()){
-            try {
-                for (Categorieexercice cat : listeCat){
-                    resultat += "<categorie>" + cat.getLibelleCategorieExercice() + "</categorie>";
-                }  
-            }catch (Exception ex){
-                resultat += ("<categorie>Erreur - " + ex.getMessage() + "</categorie>");
-            }
-            resultat += ("</liste_categories>");
-            out.println(resultat);
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(true);
+        ServiceSeance seSe = new ServiceSeance();
+        int idSeance = (int)session.getAttribute("idSeance");
+        Occseance os = new Occseance();
+        int idOccSeance = seSe.recupIdOccSeance(os);
+        for(int i = 0; i<5;i++)
+        {
+            String param = "exercice" + i;
+            if(!request.getParameter(param).isEmpty())
+            {
+                String idExercice = request.getParameter(param);
+                int idExo = Integer.parseInt(idExercice);
+                ComposerId ciD = new ComposerId(idExo, idOccSeance, idSeance, i);
+                String paramS = "nbSerie"+i;
+                String serie = request.getParameter(paramS);
+                int nbSerie = Integer.parseInt(serie);
+                String paramR = "nbRepetition"+i;
+                String repetition = request.getParameter(paramR);
+                int nbRepetition = Integer.parseInt(repetition);
+                seSe.enrComposer(ciD, nbSerie, nbRepetition);
+            }    
+            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

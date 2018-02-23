@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import services.ServiceSeance;
 
 /**
@@ -33,16 +34,29 @@ public class ServletCreerSeance extends HttpServlet {
             throws ServletException, IOException {
         
         RequestDispatcher rd;
+        HttpSession session = request.getSession(true);
         
         String libelleSeance = ("".equals(request.getParameter("nomSeance")))? "" : request.getParameter("nomSeance");
         String profil = ("".equals(request.getParameter("profil")))? "" : request.getParameter("profil");
                 
         ServiceSeance seSe = new ServiceSeance();
-        seSe.enrSeance(libelleSeance, profil);
+        //Récupération de l'identifiant de la séance fraichement remplie
+        int idSeance = seSe.enrSeance(libelleSeance, profil);
         
+        //Mise en session de l'identifiant de la séance
+        if(idSeance != 0)
+        {
+            session.setAttribute("idSeance", idSeance);
+        }
+        else
+        {
+            String msg = "Pas de numéro retourné ! ";
+            session.setAttribute("idSeance", msg);
+        }
+        
+        //Redirection vers l'étape 2.
         rd = request.getRequestDispatcher("CompleterSeance");
         rd.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

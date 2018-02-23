@@ -2,6 +2,8 @@
     Document   : AfficherExercice
     Created on : 21 févr. 2018, 05:48:57
     Author     : Bastien
+    Affichage des différents exercices avec les fonctionnalités d'ajout, de suppression et de modification.
+    Page centrale pour la gestion des exercices
 --%>
 <%@page import="metier.Exercice"%>
 <%@page import="services.ServiceExercice"%>
@@ -17,6 +19,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <!-- Ce lien hypertexte permet d'accéder à la page de création d'un exercice -->
                     <a href="FormCreaExo"><button class="btn btn-warning btn-circle"><i class="fa fa-plus"></i></button></a> : Ajouter un exercice
                 </div>
                 <!-- /.panel-heading -->
@@ -35,16 +38,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% //exo.getIdExercice()
+                            <% /*Cette boucle for permet de rajouter une ligne de tableau pour
+                                chaque exercice présent en BD. En plus des informations sur chaque exercice,
+                                la première colonne est réservé à chaque fois aux actions de modifications
+                                et de suppressions d'une ligne.
+                                */
                                ServiceExercice se = new ServiceExercice();
                                String resultat = "<tr class=\"odd gradeX\">";
                                String urlParam = "";
                                for (Exercice exo : se.getListeExercice()){
                                    urlParam = "ServletModifExercice?exoSuppr="+exo.getIdExercice();
-                                   //pour la suppressiion fait une page de confirmation et mets l'idée de l'exercice en session
+                                   /*1er bouton inclu dans le lien hypertexte avec paramètres : modification
+                                     2nd bouton avec ouverture d'une modale et appel à une fonction javascript : suppression
+                                   */
                                    resultat += "<td><a href=\""+urlParam+"\"><button class=\"btn btn-outline btn-warning btn-xs\">"
                                            + "<i class=\"fa fa-pencil\"></i></button></a>"+
-                                   "<button type=\"button\" name =\"suppresion\" id=\""+exo.getIdExercice()+"\"class=\"btn btn-outline btn-warning btn-xs\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"modalParam(this)\">"
+                                   "<button type=\"button\" id=\""+exo.getIdExercice()+"\"class=\"btn btn-outline btn-warning btn-xs\" data-toggle=\"modal\" data-target=\"#myModal\" onclick=\"modalParam(this)\">"
                                            + "<i class=\"fa fa-trash\"></i></button></td>"+
                                    "<td>"+exo.getCategorieexercice().getLibelleCategorieExercice()+"</td>"+
                                    "<td>"+exo.getLibelleExercice()+"</td>" +
@@ -67,7 +76,8 @@
             <div id="myModal" class="modal fade" role="dialog">
               <div class="modal-dialog">
 
-                <!-- Modal content-->
+                <!-- Code de la fenêtre modale, ce dernier est statique
+                et provient du template Bootstrap-->
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -77,6 +87,8 @@
                     <p>Voulez-vous supprimer cet exercice?</p>
                   </div>
                   <div class="modal-footer">
+                      <!-- Ce lien hypertexte est appelé par une fonction js et son tag href
+                      est modifié afin de comprendre l'url de la servlet et la valeur d'un paramètre associé-->
                       <a href="#" id="parametre"><button type="button" class="btn btn-default">OK</button></a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                   </div>

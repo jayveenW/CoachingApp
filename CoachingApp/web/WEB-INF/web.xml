@@ -17,10 +17,6 @@
         <servlet-class>servlets.ServletAjoutExercice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletCategorieExercice</servlet-name>
-        <servlet-class>servlets.ServletCategorieExercice</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Footer</servlet-name>
         <jsp-file>/jsp/includes/footer.jsp</jsp-file>
     </servlet>
@@ -95,10 +91,6 @@
     <servlet-mapping>
         <servlet-name>ServletAjoutExercice</servlet-name>
         <url-pattern>/ServletAjoutExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletCategorieExercice</servlet-name>
-        <url-pattern>/ServletCategorieExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Footer</servlet-name>

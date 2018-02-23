@@ -8,21 +8,19 @@
  * Méthode qui retourne l'objet XMLHttpRequest en fonction du navigateur.
  */
 
-/*function test(){
-    alert(document.getElementById("catExo").value);
-}*/
-/*(function() {
-   document.getElementsByClassName("btn btn-outline btn-warning btn-xs").addEventListener("click", function(){
-        console.log("test");
-    }); 
-})*/
 
-function modalParam(button){
-    var id = button.getAttribute("id");
+/**
+ * fonction qui modifie le tag href d'un lien hypertexte
+ * présent sur la modale de confirmation de suppression
+ * @param {type} button
+ * @returns {undefined}
+ */
+function modalParam(p_bouton) {
+    var id = p_bouton.getAttribute("id");
     var elt = document.getElementById("parametre");
-    var url = "ServletSupprExercice?idExo="+id;
+    var url = "ServletSupprExercice?idExo=" + id;
     elt.href = url;
-    
+
 }
 
 function getXMLHttpRequest()
@@ -92,6 +90,52 @@ function rechercherProgramme() {
     xhr.open("POST", "ServletMot", true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send("saisie=" + saisie);
+}
+
+/**
+ * Cette méthode affiche les séances et les exos.
+ *
+ * On utilise la propriété 'responseXML' de l'objet XMLHttpRequest afin
+ * de récupérer sous forme d'arbre DOM le document XML envoyé par le serveur.
+ */
+function l_maSeance()
+{
+    var nomseance = document.getElementById("lseance").value;
+
+    var xhr = getXMLHttpRequest();
+
+    xhr.onreadystatechange = function ()
+    {
+        // Si l'on a tout reçu et que la requête http s'est bien passée.
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            var i;
+            var xmlDoc = xhr.responseXML;
+            var tableau = xmlDoc.getElementsByTagName("unExercice");
+            var lignes = "";
+
+            // Elément html que l'on va mettre à jour.
+            var elt = document.getElementById("maseance");
+
+            for (i = 0; i < tableau.length; i++) {
+                lignes += "<div>" + tableau[i].childNodes[0].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[1].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[2].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[3].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[4].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[5].nodeValue + "</div>"
+                        + "<div>" + tableau[i].childNodes[6].nodeValue + "</div>";
+            }
+
+            elt.innerHTML = lignes;
+        }
+    };
+
+    // Requête au serveur avec les paramètres éventuels.
+    xhr.open("POST", "ServletMaSeance", true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send("nomseance=" + nomseance);
+    console.log(nomseance);
 }
 
 

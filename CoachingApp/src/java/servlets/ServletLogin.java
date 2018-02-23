@@ -62,16 +62,17 @@ public class ServletLogin extends HttpServlet {
                 request.getSession().setAttribute("user", user); // La session prend l'utilisateur connecté en paramètre
 
                 for (Role r : user.getRoles()) {
+                    request.getSession().setAttribute("role", r);
                     if ("Administrateur".equals(r.getLibelleRole())) {
-                        url = "ADMINJSP";
+                        url = "AccueilAdmin";
                     } else if ("Client".equals(r.getLibelleRole())) {
                         Client client = loginService.getObjClient(userId);
                         request.getSession().setAttribute("client", client);
-                        url = "FormCreaExo";
+                        url = "AccueilClient";
                     } else if ("Coach".equals(r.getLibelleRole())) {
                         Coach coach = loginService.getObjCoach(userId);
                         request.getSession().setAttribute("coach", coach);
-                        url = "COACHACCUEILJSP";
+                        url = "AccueilCoach";
                     }
                 }
             } else {

@@ -31,23 +31,22 @@ public class ServletSupprExercice extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "";
+        String url = "AfficherExercice";
         String textInfo = "l'exercice";
         RequestDispatcher rd;
+        //récupération de l'id de l'exercice à supprimer
         String idEx = ("".equals(request.getParameter("idExo")))? "" : request.getParameter("idExo");
-        boolean result;
+        boolean resultat;
         
         ServiceExercice servExo = new ServiceExercice();
-        result = servExo.supprExerciceBD(Integer.parseInt(idEx));
+        resultat = servExo.supprExerciceBD(Integer.parseInt(idEx));
         
-        if (result == true) {
+        if (resultat == true) {
             textInfo += " a bien été supprimé";
             request.getSession().setAttribute("info", textInfo);
-            url = "AfficherExercice";
         } else {
             textInfo += " n'a pas pu être supprimé";
             request.getSession().setAttribute("info", textInfo);
-            url = "AfficherExercice";
         }
 
         // Redirection
