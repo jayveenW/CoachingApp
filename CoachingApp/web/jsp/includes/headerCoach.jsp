@@ -192,7 +192,7 @@
             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuration</a>
             </li>
             <li class="divider"></li>
-            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
+            <li><a href="ServletDeconnexion"><i class="fa fa-sign-out fa-fw"></i> Se déconnecter</a>
             </li>
         </ul>
         <!-- /.dropdown-user -->

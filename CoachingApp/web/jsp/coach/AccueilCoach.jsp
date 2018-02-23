@@ -23,7 +23,6 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
         <div class="form-group">
-
             <H2>Bienvenue sur votre espace coach</H2>
             <p>Vous trouverez dans le menu latéral gauche les options concernant
             <ul>
@@ -34,7 +33,6 @@
                 <li>Les bilans de vos clients</li>
             </ul>
             </p>
-
         </div>
     </div>
 </div>
