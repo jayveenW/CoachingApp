@@ -40,7 +40,7 @@
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
         <div class="form-group">
-            <input type="hidden" value="<%= idcli %>" id="idcli"/>
+            <input type="hidden" value="<%= idcli%>" id="idcli"/>
             <% if (libProg == null) {
             %>
             <H2>Vous n'avez pas de programme</H2>
@@ -65,8 +65,9 @@
             </select>
 
             <input type="button" class="btn btn-primary" value="Afficher la séance"  onClick="l_maSeance()" />
-
-            <div id="maseance" class="container pt-5"></div>
+            
+                <div id="maseance" class="panel-body"></div>
+                
             <%
                 }
             %>

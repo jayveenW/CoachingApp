@@ -116,14 +116,14 @@ function l_maSeance()
         {
             var xmlDoc = xhr.responseXML;
             var tableau = xmlDoc.getElementsByTagName("unExercice");
-            var lignes = "<div class=\"card mb-5\"><div class=\"card-block p-0\"><table class=\"table table-bordered table-sm m-0\"><thead class=\"\"><tr><th>#</th><th>Name</th><th>Registration Date</th><th>E-mail address</th><th>Premium Plan</th><th>Premium Plan</th><th>Premium Plan</th><th>Premium Plan</th></tr></thead><tbody>";
+            var lignes = "<table width=\"100%\" class=\"table table-striped table-bordered table-hover\" id=\"dataTables-example\"><thead>"
+            + "<tr><th>Catégorie</th><th>Libellé</th><th>Descriptif</th><th>Niveau</th><th>Recommandation</th><th>Photo</th><th>Video</th></tr></thead><tbody>";
                     
             // Elément html que l'on va mettre à jour.
             var elt = document.getElementById("maseance");
 
             for (i = 0; i < tableau.length; i++) {
-                lignes += "<tr><td><label class=\"custom-control custom-checkbox\"><input type=\"checkbox\" class=\"custom-control-input\"><span class=\"custom-control-indicator\"></span></label></td>"
-                        + "<td>" + tableau[i].childNodes[1].nodeValue + "</td>"
+                lignes += "<td>" + tableau[i].childNodes[1].nodeValue + "</td>"
                         + "<td>" + tableau[i].childNodes[3].nodeValue + "</td>"
                         + "<td>" + tableau[i].childNodes[5].nodeValue + "</td>"
                         + "<td>" + tableau[i].childNodes[7].nodeValue + "</td>"
@@ -132,7 +132,7 @@ function l_maSeance()
                         + "<td>" + tableau[i].childNodes[13].nodeValue + "</td>"
                         + "<td><span class=\"label label-success\">Active</span></td></tr>";
             }
-            elt.innerHTML = lignes + "</tbody></table></div></div></div>";
+            elt.innerHTML = lignes + "</tbody></table>";
         }
     };
 
