@@ -20,7 +20,18 @@ import utilitaire.Utilitaire;
  * @author Bastien
  */
 public class ServiceExercice {
-    public boolean enrExerciceBD(Categorieexercice catEx, String libEx, String nivEx, String descEx, String photoEx, String vidEx, String recoEx) {
+    /**
+     * 
+     * @param p_catEx
+     * @param p_libEx
+     * @param p_nivEx
+     * @param p_descEx
+     * @param p_photoEx
+     * @param p_vidEx
+     * @param p_recoEx
+     * @return 
+     */
+    public boolean enrExerciceBD(Categorieexercice p_catEx, String p_libEx, String p_nivEx, String p_descEx, String p_photoEx, String p_vidEx, String p_recoEx) {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -29,8 +40,10 @@ public class ServiceExercice {
         try {
             tx = session.getTransaction();
             tx.begin();
-
-            Exercice exo = new Exercice(catEx, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
+            /*Création d'une nouvelle instance d'exercice avant de la passer en paramètre
+            de la fonction save
+            */
+            Exercice exo = new Exercice(p_catEx, p_libEx, p_nivEx, p_descEx, p_photoEx, p_vidEx, p_recoEx);
             session.save(exo);
 
             tx.commit();
@@ -48,7 +61,19 @@ public class ServiceExercice {
         return enr;
     }
     
-    public boolean modifExerciceBD(int idEx, Categorieexercice catEx, String libEx, String nivEx, String descEx, String photoEx, String vidEx, String recoEx) {
+    /**
+     * Modification d'un exercice en BD
+     * @param p_idEx
+     * @param p_catEx
+     * @param p_libEx
+     * @param p_nivEx
+     * @param p_descEx
+     * @param p_photoEx
+     * @param p_vidEx
+     * @param p_recoEx
+     * @return 
+     */
+    public boolean modifExerciceBD(int p_idEx, Categorieexercice p_catEx, String p_libEx, String p_nivEx, String p_descEx, String p_photoEx, String p_vidEx, String p_recoEx) {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -56,8 +81,10 @@ public class ServiceExercice {
         try {
             tx = session.getTransaction();
             tx.begin();
-            Exercice exo = (Exercice)session.get(Exercice.class, idEx);
-            exo.setGlobal(catEx, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
+            //récupération de l'exercice grâce au session.get et grâce à l'id en paramètre
+            Exercice exo = (Exercice)session.get(Exercice.class, p_idEx);
+            //méthode setGlobal : regroupe tous les setters de la classe Exercice qui sont utiles ici
+            exo.setGlobal(p_catEx, p_libEx, p_nivEx, p_descEx, p_photoEx, p_vidEx, p_recoEx);
             session.update(exo);
             tx.commit();
             enr = true;
@@ -74,7 +101,12 @@ public class ServiceExercice {
         return enr;
     }
     
-    public boolean supprExerciceBD(int idEx) {
+    /**
+     * Suppresion d'un exercice dans la BD grâce à son idée
+     * @param idEx
+     * @return 
+     */
+    public boolean supprExerciceBD(int p_idEx) {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -82,7 +114,8 @@ public class ServiceExercice {
         try {
             tx = session.getTransaction();
             tx.begin();
-            Exercice exo = (Exercice)session.get(Exercice.class, idEx);
+            //récupération de l'exercice dans une variable locale afin de pouvoir le supprimer par la suite
+            Exercice exo = (Exercice)session.get(Exercice.class, p_idEx);
             session.delete(exo);
             tx.commit();
             enr = true;
@@ -102,10 +135,10 @@ public class ServiceExercice {
     /**
      * Récupère l'objet catégorie d'une catégorie en string
      *
-     * @param catEx
+     * @param p_catEx
      * @return
      */
-    public Categorieexercice recupObjetCatExo(String catEx) {
+    public Categorieexercice recupObjetCatExo(String p_catEx) {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
@@ -113,12 +146,12 @@ public class ServiceExercice {
 
         // mettre en CamelCase
         Utilitaire ut = new Utilitaire();
-        String catExercice = ut.convertCamelCase(catEx);
+        String catExercice = ut.convertCamelCase(p_catEx);
 
         try {
             tx = session.getTransaction();
             tx.begin();
-
+            //récupération d'une Catégorie d'exercice grâce à une condition SQL sur le libellé
             Query query = session.createQuery("from Categorieexercice where libelleCategorieExercice like '" + catExercice + "'");
             catExo = (Categorieexercice) query.uniqueResult();
 
@@ -136,16 +169,21 @@ public class ServiceExercice {
         return catExo;
     }
     
+    /**
+     * Fonction qui renvoie l'intégralité des catégories d'exercices en BD
+     * @return 
+     */
     public List<Categorieexercice> getListeCategorie() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
+        //instanciation de l'objet de retour
         List<Categorieexercice> listeCat = new ArrayList<>();
              
         try {
             tx = session.getTransaction();
             tx.begin();
-
+            //Requête de sélection des catégories
             Query query = session.createQuery("from Categorieexercice");
             listeCat = query.list();
 
@@ -160,18 +198,23 @@ public class ServiceExercice {
         return listeCat;
     }
     
+    /**
+     * Fonction qui récupère l'intégralité des exercices en BD
+     * @return 
+     */
     public List<Exercice> getListeExercice() {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
-        List<Exercice> listeCat = new ArrayList<>();
+        //instanciation de l'objet de retour
+        List<Exercice> listeExo = new ArrayList<>();
              
         try {
             tx = session.getTransaction();
             tx.begin();
 
             Query query = session.createQuery("from Exercice");
-            listeCat = query.list();
+            listeExo = query.list();
 
             tx.commit();
         } catch (Exception e) {
@@ -181,19 +224,25 @@ public class ServiceExercice {
             session.close();
         }*/
 
-        return listeCat;
+        return listeExo;
     }
     
+    /**
+     * Fonction qui récupère un exercice en fonction de son id
+     * @param idEx
+     * @return 
+     */
     public Exercice getExercice(String idEx) {
 
         Session session = HibernateUtil.openSession();
         Transaction tx = null;
         Exercice exo = null;
+        //Conversion de l'id du type String au type entier
         int idExInt = Integer.parseInt(idEx);
         try {
             tx = session.getTransaction();
             tx.begin();
-
+            //Requête Hibernate avec condition sur l'id de l'exercice
             Query query = session.createQuery("from Exercice where idExercice = :id ");
             query.setParameter("id", idExInt);
             exo = (Exercice) query.uniqueResult();
@@ -211,20 +260,20 @@ public class ServiceExercice {
         return exo;
     }
     
-     public static void main (String[] args)
+     /*public static void main (String[] args)
     {
         System.out.println("hello world");
         ServiceExercice se = new ServiceExercice();
-        /*List<Categorieexercice> test = se.getListeCategorie();
+        List<Categorieexercice> test = se.getListeCategorie();
         for (Categorieexercice cati : test){
             System.out.println(cati.getLibelleCategorieExercice());
-        }*/
-        /*List<Exercice> test = se.getListeExercice();
+        }
+        List<Exercice> test = se.getListeExercice();
         for (Exercice ex : test){
             System.out.println(ex.getCategorieexercice().getLibelleCategorieExercice());
-        }*/
+        }
         
         System.out.println(se.getExercice("1").getLibelleExercice());
         
-    }
+    }*/
 }

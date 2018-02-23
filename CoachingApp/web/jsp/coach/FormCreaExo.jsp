@@ -1,8 +1,15 @@
+<%-- 
+    Document   : FormCreaExo
+    Created on : 19 févr. 2018, 14:25:38
+    Author     : Bastien
+    Cette page permet d'ajouter un nouvel exercice en BD
+--%>
 <%@page import="metier.Categorieexercice"%>
 <%@page import="metier.Exercice"%>
 <%@page import="services.ServiceExercice"%>
 <%@include file="../includes/headerCoach.jsp" %>
-<% String[] nivDifficulte = {"Débutant", "Confirmé", "Expert"}; %>
+<% 
+    String[] nivDifficulte = {"Débutant", "Confirmé", "Expert"}; %>
     <div class="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
@@ -15,6 +22,8 @@
                     <label for="catExo">Catégorie de l'exercice</label>
                     <select class="form-control" id="catExo" name="catExo" required>
                       <%
+                          /* Affichage de toute les catégories d'exercice
+                          présentes en BD*/
                             ServiceExercice se = new ServiceExercice();
                             String resultat = "";
                             for (Categorieexercice catExo : se.getListeCategorie()){
@@ -33,6 +42,8 @@
                     <label for="niveauExo">Niveau de l'exercice</label>
                     <select class="form-control" id="niveauExo" name="niveauExo" required>
                         <%
+                            /* Affichage des niveaux de difficulté d'un exercice
+                            grâce à la variable en dur présent au début de ce fichier*/
                             String resultatBis = "";
                             for (String niv : nivDifficulte){
                                 resultatBis += "<option value=\""+niv+"\">"+niv+"</option>";
@@ -57,8 +68,9 @@
                     <label for="descriptifExo">Recommandation pour l'exercice</label>
                     <textarea class="form-control" id="recommandationExo" name="recommandationExo" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-warning">Valider</button>
             </form>
+            <a href="AfficherExercice"><button type="submit" class="btn btn-warning">Annuler</button></a>
         </div>
     </div>
     <%@include file="../includes/footer.jsp" %>

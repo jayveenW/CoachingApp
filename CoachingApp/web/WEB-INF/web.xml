@@ -17,10 +17,6 @@
         <servlet-class>servlets.ServletAjoutExercice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletCategorieExercice</servlet-name>
-        <servlet-class>servlets.ServletCategorieExercice</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Footer</servlet-name>
         <jsp-file>/jsp/includes/footer.jsp</jsp-file>
     </servlet>
@@ -45,6 +41,18 @@
         <jsp-file>/jsp/coach/AfficherExercice.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>ModificationExercice</servlet-name>
+        <jsp-file>/jsp/coach/ModificationExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletModifExercice</servlet-name>
+        <servlet-class>servlets.ServletModifExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletSupprExercice</servlet-name>
+        <servlet-class>servlets.ServletSupprExercice</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AccueilAdmin</servlet-name>
         <jsp-file>/jsp/admin/AccueilAdmin.jsp</jsp-file>
     </servlet>
@@ -59,6 +67,26 @@
     <servlet>
         <servlet-name>Inscription</servlet-name>
         <jsp-file>/jsp/connexion/Inscription.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletMaSeance</servlet-name>
+        <servlet-class>servlets.ServletMaSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CompleterSeance</servlet-name>
+        <jsp-file>/jsp/coach/CompleterSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCompleterSeance</servlet-name>
+        <servlet-class>servlets.ServletCompleterSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <servlet-class>servlets.ServletCreerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreerSeance</servlet-name>
+        <jsp-file>/jsp/coach/CreerSeance.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
@@ -101,10 +129,6 @@
         <url-pattern>/ServletAjoutExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletCategorieExercice</servlet-name>
-        <url-pattern>/ServletCategorieExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Footer</servlet-name>
         <url-pattern>/Footer</url-pattern>
     </servlet-mapping>
@@ -143,6 +167,38 @@
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/Inscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMaSeance</servlet-name>
+        <url-pattern>/ServletMaSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificationExercice</servlet-name>
+        <url-pattern>/ModificationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifExercice</servlet-name>
+        <url-pattern>/ServletModifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSupprExercice</servlet-name>
+        <url-pattern>/ServletSupprExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompleterSeance</servlet-name>
+        <url-pattern>/CompleterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCompleterSeance</servlet-name>
+        <url-pattern>/ServletCompleterSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCreerSeance</servlet-name>
+        <url-pattern>/ServletCreerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreerSeance</servlet-name>
+        <url-pattern>/CreerSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

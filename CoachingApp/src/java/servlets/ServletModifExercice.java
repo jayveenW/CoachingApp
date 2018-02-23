@@ -36,7 +36,9 @@ public class ServletModifExercice extends HttpServlet {
         // Chainage direct vers les JSP
         RequestDispatcher rd;
 
-        // Récup des données du formulaire
+        /* Récupération des données du formulaire, test si les paramètres sont vides
+        pour éviter des erreurs de type NullPointerException
+        */
         String idEx = ("".equals(request.getParameter("idExo")))? "" : request.getParameter("idExo");
         String catEx = ("".equals(request.getParameter("catExo")))? "" : request.getParameter("catExo");
         String libEx = ("".equals(request.getParameter("libelleExo")))? "" : request.getParameter("libelleExo");
@@ -47,10 +49,10 @@ public class ServletModifExercice extends HttpServlet {
         String recoEx = ("".equals(request.getParameter("recommandationExo")))? "" : request.getParameter("recommandationExo");
         String textInfo = "L'exercice " + libEx;
         ServiceExercice servExo = new ServiceExercice(); // Instanciation du service
-        Categorieexercice catExo = servExo.recupObjetCatExo(catEx);
-        boolean result = servExo.modifExerciceBD(Integer.parseInt(idEx), catExo, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
+        Categorieexercice catExo = servExo.recupObjetCatExo(catEx); //récupération d'une catégorie à partir de son libellé
+        boolean resultat = servExo.modifExerciceBD(Integer.parseInt(idEx), catExo, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
         
-        if (result == true) {
+        if (resultat == true) {
             textInfo += " a bien été modifié dans la catégorie " + catEx;
             request.getSession().setAttribute("info", textInfo);
             url = "AfficherExercice";
@@ -77,8 +79,9 @@ public class ServletModifExercice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /*fonction appelé par la jsp affichage qui sert à rediriger vers la page
+        de modification en passant l'exercice à modifier en session*/
         String url = "ModificationExercice";
-        // Chainage direct vers les JSP
         RequestDispatcher rd;
         ServiceExercice se = new ServiceExercice();
         Exercice exo = se.getExercice(request.getParameter("exoSuppr"));
