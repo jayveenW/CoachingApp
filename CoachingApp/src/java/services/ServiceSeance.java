@@ -6,8 +6,11 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 import metier.Composer;
 import metier.ComposerId;
+import metier.Constituer;
+import metier.ConstituerId;
 import metier.HibernateUtil;
 import metier.Occseance;
 import metier.Seance;
@@ -93,5 +96,44 @@ public class ServiceSeance {
             e.printStackTrace();
         }
         return insert;
+    }
+    
+    /**
+     * Méthode servant à retourner le résulta d'un select en BDD.
+     * @return 
+     */
+    public static List<Seance> afficherSeance(){
+        
+      Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+      Transaction t = session.beginTransaction();
+      Query q = session.createQuery("from Seance");
+      List<Seance> result = (List<Seance>) q.list();
+  
+      t.commit();
+      return result; 
+       
+    }
+    
+    /**
+     * méthode servant à l'affectation d'une séance. alimentation d'une table intermédiaire.
+     * pour alimenter la table intermédiaire Constituer il est necessaire de passer par le champs ConstituerId qui stock des champs utile
+     * qui lui même ne peux pas devenir persistant (ajouter en BDD)
+     * il conviens donc d'utiliser la méthode setId qui prend en paramètres l'objet Constituer associer à l'objet ConstituerId contenant les informations voulu
+     * Et c'est cet objet Constituer que l'ont rend persistant
+     * @param c -> objet Constituer
+     * @param cID -> objet ConstituerId
+     */
+    public static void affecterSeance(Constituer c, ConstituerId cID){
+        
+      Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+      Transaction t = session.beginTransaction();
+      
+      ConstituerId cid = new ConstituerId(cID.getOrdreSeance(),cID.getIdSeance(),cID.getIdSequence(),cID.getNumeroSemaine(),cID.getAnnee());
+      Constituer con = new Constituer(c.getNbRepetitionSeance());
+      con.setId(cid);
+      
+      session.save(con);
+      t.commit();
+      
     }
 }

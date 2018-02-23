@@ -24,6 +24,11 @@ public class Programme  implements java.io.Serializable {
        this.libelleProgramme = libelleProgramme;
        this.occurenceprogrammes = occurenceprogrammes;
     }
+    
+    public Programme(Set<Profilsportif> p, String libelleProgramme){
+        this.libelleProgramme = libelleProgramme;
+       this.profilSportifs = p;
+    }
    
     public Integer getIdProgramme() {
         return this.idProgramme;

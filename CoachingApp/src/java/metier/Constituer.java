@@ -32,6 +32,10 @@ public class Constituer  implements java.io.Serializable {
        this.sequence = sequence;
        this.nbRepetitionSeance = nbRepetitionSeance;
     }
+    
+    public Constituer(Integer nbRepetitionSeance) {
+       this.nbRepetitionSeance = nbRepetitionSeance;
+    }
    
     public ConstituerId getId() {
         return this.id;

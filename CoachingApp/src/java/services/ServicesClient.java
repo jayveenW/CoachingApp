@@ -20,7 +20,11 @@ import org.hibernate.Transaction;
  * @author OSoro
  */
 public class ServicesClient {
-
+    
+    /**
+     * Méthode servant à retourner le résultat d'un select en BDD.
+     * @return 
+     */
     public static List<Client> afficherClient() {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -30,6 +34,18 @@ public class ServicesClient {
 
         t.commit();
         return result;
+
+    }
+    
+    public static void ajoutClientAdmin(Client c) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+
+        Client client1 = new Client(c.getNomCli(), c.getPrenomClient(), c.getMailClient(),c.getDateNaissanceClient(), c.getTelephoneClient(), c.getTypeAbonnementClient(), c.getStatutClient());
+
+        session.save(client1);
+        t.commit();
 
     }
 

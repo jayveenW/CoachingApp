@@ -4,17 +4,29 @@
 <%@include file="../includes/headerCoach.jsp" %>
 <!DOCTYPE html>
 
+
+<%-- 
+    Document   : AjouterClient
+    Created on : 20 févr. 2018, 21:44:34
+    Author     : OSoro
+    Page d'affichage de la liste des clients.
+--%>
+
 <div class="row">
     <div class="col-lg-12">
         <h3 class="page-header">Liste des clients</h3>
     </div>
 </div>
 
-<div class="row">
+<form method="Post" action="AjoutClient">
+    <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
         <a class="btn btn-default pull-right" href="AjouterClient">Ajouter un client</a>
     </div>
 </div>
+    
+</form>
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -26,10 +38,14 @@
                 <th>Prenom</th>
                 <th>Id sportif</th>
                 </thead>
+<<<<<<< HEAD
+                
+=======
                 <span class="error">${erreurs['incorrect']}</span>
                 <span class="error">${erreurs['invalide']}</span>
                 <!-- à virer par la suite --> 
                 <!-- Ajouter les liens pour accéder à modifier et supprimer --> 
+>>>>>>> origin/master
 
                 <%
                     try {

@@ -4,6 +4,13 @@
 <%@include file="../includes/headerCoach.jsp" %>
 <!DOCTYPE html>
 
+<%-- 
+    Document   : AjouterClient
+    Created on : 20 févr. 2018, 21:44:34
+    Author     : OSoro
+    Page d'affichage de la liste des programme.
+--%>
+
 <div class="row">
     <div class="col-lg-12">
         <h3 class="page-header">Liste des programmes</h3>
@@ -21,7 +28,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="form-group">
-            <input class="btn btn-default" type="submit" name="Ajouter" id="AjouterProgramme" value="Ajouter un programme">
+           <form method="POST" action="AjoutProgramme">
+            <a></a> <input class="btn btn-default" type="submit" name="Ajouter" id="AjouterProgramme" value="Ajouter un programme" >
+             </form>
         </div>
 
 
@@ -30,22 +39,21 @@
             <table class="table table-striped" id="tableauProgramme">       
                 <thead>
                     <th>Nom du programme</th>
-                    <th>Actions</th>
+                    <th>ID programme</th>
                 </thead>
-                <!-- à virer par la suite --> 
-                    <!-- Ajouter les liens pour accéder à modifier et supprimer --> 
+ 
 
                     <%
                         try {
                             for (Programme prog : ServicesProgramme.afficherProgramme()) {
-                                out.println("<tr><td>" + prog.getIdProgramme()+ "</td><td>" + prog.getLibelleProgramme() + "</td></tr>");
+                                out.println("<tr><td>" + prog.getLibelleProgramme() + "</td><td>" + prog.getIdProgramme() + "</td></tr>");
                             }
                         } catch (Exception e) {
                             out.println("<p>" + e.getMessage() + "<p>");
                         }
                     %>  
-                    <tr><td>fin tableau</td><td></td></tr>
-                <!-- A virer jusque là --> 
+                    
+                
             </table>
         </div>
     </div>

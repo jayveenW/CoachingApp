@@ -26,12 +26,19 @@ public class Sequence  implements java.io.Serializable {
     public Sequence(int ordreSequence) {
         this.ordreSequence = ordreSequence;
     }
+    
     public Sequence(String libelleSequence, Integer nbRepetitionSequence, Integer idOccProgramme, int ordreSequence, Set<Constituer> constituers) {
        this.libelleSequence = libelleSequence;
        this.nbRepetitionSequence = nbRepetitionSequence;
        this.idOccProgramme = idOccProgramme;
        this.ordreSequence = ordreSequence;
        this.constituers = constituers;
+    }
+    
+    public Sequence (String Libelle, Integer nbRepet, int OrdreSeq){
+        this.libelleSequence = Libelle;
+        this.nbRepetitionSequence = nbRepet;
+        this.ordreSequence = OrdreSeq;
     }
    
     public Integer getIdSequence() {

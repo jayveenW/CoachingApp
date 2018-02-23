@@ -2,6 +2,7 @@
     Document   : AjouterClient
     Created on : 20 févr. 2018, 21:44:34
     Author     : OSoro
+    Page admin de la création l'ajout d'un client
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +18,11 @@
         <div class="form-group">
 
             <p>Tous les champs sont obligatoires</p>
+<<<<<<< HEAD
+            <form method="Post" action="AjoutClient">
+=======
             <form method="Post" action="ServletAjouterClient">
+>>>>>>> origin/master
                 <div class="form-group">
                     <label for="Nom">Nom :</label> 
                     <input type="text" class="form-control" name="Nom" id="Nom" required>
