@@ -34,11 +34,13 @@ public class ServletAjoutExercice extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "";
+        String url = "AfficherExercice";
         // Chainage direct vers les JSP
         RequestDispatcher rd;
 
-        // Récup des données du formulaire
+        /* Récupération des données du formulaire, test si les paramètres sont vides
+        pour éviter des erreurs de type NullPointerException
+        */
         String catEx = ("".equals(request.getParameter("catExo")))? "" : request.getParameter("catExo");
         String libEx = ("".equals(request.getParameter("libelleExo")))? "" : request.getParameter("libelleExo");
         String nivEx = ("".equals(request.getParameter("niveauExo")))? "" : request.getParameter("niveauExo");
@@ -47,18 +49,17 @@ public class ServletAjoutExercice extends HttpServlet {
         String vidEx = ("".equals(request.getParameter("videoExo")))? "" : request.getParameter("videoExo");
         String recoEx = ("".equals(request.getParameter("recommandationExo")))? "" : request.getParameter("recommandationExo");
         String textInfo = "L'exercice " + libEx;
+        
         ServiceExercice servExo = new ServiceExercice(); // Instanciation du service
-        Categorieexercice catExo = servExo.recupObjetCatExo(catEx);
+        Categorieexercice catExo = servExo.recupObjetCatExo(catEx); //récupération d'une catégorie à partir de son libellé
         boolean result = servExo.enrExerciceBD(catExo, libEx, nivEx, descEx, photoEx, vidEx, recoEx);
         
         if (result == true) {
             textInfo += " a bien été inséré dans la catégorie " + catEx;
             request.getSession().setAttribute("info", textInfo);
-            url = "AfficherExercice";
         } else {
             textInfo += " n'a pas pu être inséré dans la catégorie " + catEx;
             request.getSession().setAttribute("info", textInfo);
-            url = "AfficherExercice";
         }
 
         // Redirection
