@@ -18,9 +18,10 @@
         <h1>Compléter cette séance</h1>
             <form action="ServletCompleterSeance" method="POST">
             <%
-                out.println(session.getAttribute("idSeance"));
+                //Permet l'affichage des trois formulaires.
                 for(int i=0;i<5;i++)
                 {
+                    //Récupération des exercices grâce au serviceExercice. 
                     out.println("<div class=\"form-row\">");
                     out.println("<div class=\"form-group col-md-6\">");
                     out.println("<input type=\"hidden\" name=\"ordre\" value=\"" + i + "\">");
@@ -33,6 +34,7 @@
                     }
                     out.println(select);
                     out.println("</select>");
+                    //On demande pour chaque exercice le nombre de série et de répétition.
                     out.println("</div>");
                     out.println("<div class=\"form-group col-md-3\">");
                     String nbRepetition = "";

@@ -52,6 +52,22 @@
         <servlet-name>ServletSupprExercice</servlet-name>
         <servlet-class>servlets.ServletSupprExercice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccueilAdmin</servlet-name>
+        <jsp-file>/jsp/admin/AccueilAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AccueilClient</servlet-name>
+        <jsp-file>/jsp/client/AccueilClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AccueilCoach</servlet-name>
+        <jsp-file>/jsp/coach/AccueilCoach.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Inscription</servlet-name>
+        <jsp-file>/jsp/connexion/Inscription.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletRecupProfilSportif</servlet-name>
         <url-pattern>/ServletRecupProfilSportif</url-pattern>
@@ -117,16 +133,20 @@
         <url-pattern>/AfficherExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ModificationExercice</servlet-name>
-        <url-pattern>/ModificationExercice</url-pattern>
+        <servlet-name>AccueilAdmin</servlet-name>
+        <url-pattern>/AccueilAdmin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletModifExercice</servlet-name>
-        <url-pattern>/ServletModifExercice</url-pattern>
+        <servlet-name>AccueilClient</servlet-name>
+        <url-pattern>/AccueilClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletSupprExercice</servlet-name>
-        <url-pattern>/ServletSupprExercice</url-pattern>
+        <servlet-name>AccueilCoach</servlet-name>
+        <url-pattern>/AccueilCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inscription</servlet-name>
+        <url-pattern>/Inscription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
