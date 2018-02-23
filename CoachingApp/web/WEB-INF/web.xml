@@ -156,6 +156,18 @@
         <servlet-name>ServletMaSeance</servlet-name>
         <url-pattern>/ServletMaSeance</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificationExercice</servlet-name>
+        <url-pattern>/ModificationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletModifExercice</servlet-name>
+        <url-pattern>/ServletModifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSupprExercice</servlet-name>
+        <url-pattern>/ServletSupprExercice</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
