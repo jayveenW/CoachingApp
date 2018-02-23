@@ -6,6 +6,8 @@
 <%@page import="metier.Exercice"%>
 <%@page import="services.ServiceExercice"%>
 <%@include file="../includes/headerCoach.jsp" %>
+
+<!-- NON RESPONSIVE -->
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Liste des Exercices</h1>

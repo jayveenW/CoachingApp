@@ -39,19 +39,19 @@
 
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12">
-        <div class="form-group">
-            <input type="hidden" value="<%= idcli %>" id="idcli"/>
-            <% if (libProg == null) {
+        <input type="hidden" value="<%= idcli%>" id="idcli"/>
+        <% if (libProg == null) {
+        %>
+        <H2>Vous n'avez pas de programme</H2>
+            <%
+            } else {
             %>
-            <H2>Vous n'avez pas de programme</H2>
-                <%
-                } else {
-                %>
-            <H2>Votre programme <%= libProg%></H2>
+        <H2>Votre programme : <%= libProg%></H2>
 
-            <b>Choisir une séance</b>
-            <br/>
-            Séance du : 
+        <h4>Choisir une séance</h4>
+
+        <div class='form-group'>
+            <label for='lseance'>Séance du :</label>
             <select class="form-control col" style="max-width: 135px;" id="lseance">
                 <%
                     try {
@@ -63,14 +63,14 @@
                     }
                 %>             
             </select>
-
-            <input type="button" class="btn btn-primary" value="Afficher la séance"  onClick="l_maSeance()" />
-
-            <div id="maseance" class="container pt-5"></div>
-            <%
-                }
-            %>
         </div>
+
+        <input type="button" class="btn btn-primary" value="Afficher la séance"  onClick="l_maSeance()" />
+
+        <div id="maseance" class="container pt-5"></div>
+        <%
+            }
+        %>
     </div>
 </div>
 <%@include file="../includes/footer.jsp"%>

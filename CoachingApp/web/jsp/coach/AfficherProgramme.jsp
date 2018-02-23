@@ -43,8 +43,7 @@
                         } catch (Exception e) {
                             out.println("<p>" + e.getMessage() + "<p>");
                         }
-                    %>  
-                    <tr><td>fin tableau</td><td></td></tr>
+                    %> 
                 <!-- A virer jusque là --> 
             </table>
         </div>
