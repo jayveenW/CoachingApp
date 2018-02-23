@@ -14,7 +14,7 @@
     Role role = (Role) session.getAttribute("role");
     String libRole = role.getLibelleRole();
     
-    Coach coach = (Coach) session.getAttribute("client");
+    Coach coach = (Coach) session.getAttribute("coach");
     String prenomCoach = coach.getPrenomCoach();
 %>
 
